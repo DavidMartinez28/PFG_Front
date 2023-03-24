@@ -1,7 +1,43 @@
-<nav>
-  <ul>
-    <li><a [routerLink]="['pacientes']" routerLinkActive="link-active"><i class="fa fa-address-card" aria-hidden="true"></i>Pacientes</a></li>
-    <li><a [routerLink]="['invitaciones']" routerLinkActive="link-active">Invitaciones</a></li>
-    <li><a [routerLink]="['sesiones']" routerLinkActive="link-active">Sesiones</a></li>
-  </ul>
-  </nav>
+<nav [ngClass]="{ collapsed: isNavbarCollapsed }" class="navbar">
+  <div>
+    <button (click)="toggleNavbar()">Toggle Navbar</button>
+
+    <ul class="element-list">
+      <a class="profile-icon"
+      >
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
+      </a>
+      <li>
+        <a
+          class="navbar-element"
+          [routerLink]="['pacientes']"
+          routerLinkActive="link-active"
+          >
+          <i class="fa fa-address-card iconos" aria-hidden="true"></i>
+          <span *ngIf="!isNavbarCollapsed" class="navbar-text">Pacientes</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="navbar-element"
+          [routerLink]="['invitaciones']"
+          routerLinkActive="link-active"
+          >
+          <i class="fa fa-paper-plane iconos" aria-hidden="true"></i>
+          <span *ngIf="!isNavbarCollapsed" class="navbar-text">Invitaciones</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="navbar-element"
+          [routerLink]="['sesiones']"
+          routerLinkActive="link-active"
+          >
+          <i class="fa fa-calendar iconos" aria-hidden="true"></i>
+          <span *ngIf="!isNavbarCollapsed" class="navbar-text">Sesiones</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <img class="logo-image" [src]="isNavbarCollapsed ? 'assets/logo2.png' : 'assets/logo.png'" alt="error">
+</nav>
