@@ -1,39 +1,66 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-
-  signupForm: FormGroup;
+  psicologoForm: FormGroup;
+  pacienteForm: FormGroup;
+  signupType: string = 'Psicologo';
 
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
     public router: Router
   ) {
-    this.signupForm = this.fb.group({
-      name: [''],
+    this.psicologoForm = this.fb.group({
       email: [''],
       password: [''],
-      emoji: ['']
-    })
+      type: ['Psicologo'],
+      fecha_nacimiento: [''],
+      name: [''],
+      correo: [''],
+      descripcion: [''],
+      telefono: [''],
+      sexo: [''],
+    });
+    this.pacienteForm = this.fb.group({
+      email: [''],
+      password: [''],
+      type: ['Paciente'],
+      fecha_nacimiento: [''],
+      name: [''],
+      correo: [''],
+      descripcion: [''],
+      telefono: [''],
+      sexo: [''],
+    });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   registerUser() {
-    this.authService.signUp(this.signupForm.value).subscribe((res) => {
-      if (res.result) {
-        this.signupForm.reset()
-        this.router.navigate(['log-in']);
-      }
-    })
+    if (this.signupType === 'Psicologo') {
+      let form = this.psicologoForm;
+      this.authService.signUpPsicologo(form.value).subscribe((res) => {
+        if (res.result) {
+          form.reset();
+          this.router.navigate(['log-in']);
+        }
+      });
+    } else {
+      let form = this.pacienteForm;
+      this.authService.signUpPaciente(form.value).subscribe((res) => {
+        if (res.result) {
+          form.reset();
+          this.router.navigate(['log-in']);
+        }
+      });
+    }
   }
-
 }

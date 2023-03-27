@@ -7,8 +7,7 @@ import { CoreModule } from './core/core.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/interceptors/authconfig.interceptor';
-import { MenuComponent } from './core/components/menu/menu.component';
-import { FooterComponent } from './core/components/footer/footer.component';
+
 
 
 @NgModule({
