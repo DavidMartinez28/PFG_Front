@@ -1,14 +1,9 @@
 .container {
     display: flex;
     align-items: center;
-    flex-direction: row;
+    justify-content: center;
     height: 100vh;
   }
-  .form-header {
-    max-width: 400px;
-    width: 100%;
-    margin-bottom: 30px;
-  }  
   
   .form-wrapper {
     width: 600px;
@@ -47,16 +42,9 @@
   
   button[type="submit"]:hover {
     border-radius: 30px;
-    background-color: #e6d7f3;
+    background-color: #be96e2;
   }
 
-  .image-wrapper {
-    flex: 1;
-    max-width: 50%;
-    margin-left: 300px;
-    width: 700px;
-    height: auto;
-  }
   h3 {
     font-size: 30px;
     font-weight: bold;

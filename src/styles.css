@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 /* Box sizing reset */
 html {
@@ -30,7 +31,7 @@ html {
   }
   
   /* Remove form elements border */
-  input, textarea, select, button {
+  input, textarea, select{
     border: none;
     background: none;
     font-family: inherit;
@@ -50,3 +51,5 @@ html {
     font-family: Arial, sans-serif;
   }
   
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

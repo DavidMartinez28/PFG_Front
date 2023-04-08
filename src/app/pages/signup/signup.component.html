@@ -1,176 +1,164 @@
-<div>
-  <h3>Please sign up</h3>
-  <div>
-    <label>Tipo</label>
-    <select class="form-control" [(ngModel)]="signupType">
-      <option value="Psicologo">Psicólogo</option>
-      <option value="Paciente">Paciente</option>
-    </select>
+<div class="container">
+  <div class="image-wrapper">
+    <img src="../../../assets/logo.png" />
   </div>
-  <form
-    *ngIf="signupType === 'Psicologo'"
-    [formGroup]="psicologoForm"
-    (submit)="registerUser()"
-  >
+  <div class="form-header">
+    <h3>Crea tu cuenta en PsychoGood</h3>
     <div>
-      <label>Email address</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="email"
-        placeholder="Enter email"
-        required
-      />
-    </div>
-    <div>
-      <label>Password</label>
-      <input
-        type="password"
-        class="form-control"
-        formControlName="password"
-        placeholder="Password"
-        required
-      />
-    </div>
-    <div>
-      <label>Fecha de nacimiento</label>
-      <input
-        type="date"
-        class="form-control"
-        formControlName="fecha_nacimiento"
-        required
-      />
-    </div>
-    <div>
-      <label>Nombre completo</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="name"
-        placeholder="Nombre completo"
-        required
-      />
-    </div>
-    <div>
-      <label>Correo electrónico</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="correo"
-        placeholder="Correo electrónico"
-        required
-      />
-    </div>
-    <div>
-      <label>Descripción</label>
-      <textarea
-        class="form-control"
-        formControlName="descripcion"
-        placeholder="Escribe una descripción"
-      ></textarea>
-    </div>
-    <div>
-      <label>Teléfono</label>
-      <input
-        type="tel"
-        class="form-control"
-        formControlName="telefono"
-        placeholder="Teléfono"
-        required
-      />
-    </div>
-    <div>
-      <label>Sexo</label>
-      <select class="form-control" formControlName="sexo" required>
-        <option value="">Selecciona un género</option>
-        <option value="Masculino">Masculino</option>
-        <option value="Femenino">Femenino</option>
-        <option value="Otro">Otro</option>
+      <label>Tipo</label>
+      <select class="form-control" [(ngModel)]="signupType">
+        <option value="Psicologo">Psicólogo</option>
+        <option value="Paciente">Paciente</option>
       </select>
     </div>
-    <button type="submit">Sign up</button>
-  </form>
-  <form
-    *ngIf="signupType === 'Paciente'"
-    [formGroup]="pacienteForm"
-    (submit)="registerUser()"
-  >
-    <div>
-      <label>Email address</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="email"
-        placeholder="Enter email"
-        required
-      />
-    </div>
-    <div>
-      <label>Password</label>
-      <input
-        type="password"
-        class="form-control"
-        formControlName="password"
-        placeholder="Password"
-        required
-      />
-    </div>
-    <div>
-      <label>Fecha de nacimiento</label>
-      <input
-        type="date"
-        class="form-control"
-        formControlName="fecha_nacimiento"
-        required
-      />
-    </div>
-    <div>
-      <label>Nombre completo</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="name"
-        placeholder="Nombre completo"
-        required
-      />
-    </div>
-    <div>
-      <label>Correo electrónico</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="correo"
-        placeholder="Correo electrónico"
-        required
-      />
-    </div>
-    <div>
-      <label>Descripción</label>
-      <textarea
-        class="form-control"
-        formControlName="descripcion"
-        placeholder="Escribe una descripción"
-      ></textarea>
-    </div>
-    <div>
-      <label>Teléfono</label>
-      <input
-        type="tel"
-        class="form-control"
-        formControlName="telefono"
-        placeholder="Teléfono"
-        required
-      />
-    </div>
-    <div>
-      <label>Sexo</label>
-      <select class="form-control" formControlName="sexo" required>
-        <option value="">Selecciona un género</option>
-        <option value="Masculino">Masculino</option>
-        <option value="Femenino">Femenino</option>
-        <option value="Otro">Otro</option>
-      </select>
-    </div>
-    <button type="submit">Sign up</button>
-  </form>
+
+    <form
+      *ngIf="signupType === 'Psicologo'"
+      [formGroup]="psicologoForm"
+      (submit)="registerUser()"
+      class="form-wrapper"
+    >
+      <div>
+        <label>Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter email"
+          required
+        />
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div>
+        <label>Fecha de nacimiento</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="fecha_nacimiento"
+          required
+        />
+      </div>
+      <div>
+        <label>Nombre completo</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          placeholder="Nombre completo"
+          required
+        />
+      </div>
+      <div>
+        <label>Descripción</label>
+        <textarea
+          class="form-control"
+          formControlName="descripcion"
+          placeholder="Escribe una descripción"
+        ></textarea>
+      </div>
+      <div>
+        <label>Teléfono</label>
+        <input
+          type="tel"
+          class="form-control"
+          formControlName="telefono"
+          placeholder="Teléfono"
+          required
+        />
+      </div>
+      <div>
+        <label>Sexo</label>
+        <select class="form-control" formControlName="sexo" required>
+          <option value="">Selecciona un género</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <button type="submit">Registrarse</button>
+    </form>
+    <form
+      *ngIf="signupType === 'Paciente'"
+      [formGroup]="pacienteForm"
+      (submit)="registerUser()"
+      class="form-wrapper"
+    >
+      <div>
+        <label>Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter email"
+          required
+        />
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div>
+        <label>Fecha de nacimiento</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="fecha_nacimiento"
+          required
+        />
+      </div>
+      <div>
+        <label>Nombre completo</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          placeholder="Nombre completo"
+          required
+        />
+      </div>
+      <div>
+        <label>Descripción</label>
+        <textarea
+          class="form-control"
+          formControlName="descripcion"
+          placeholder="Escribe una descripción"
+        ></textarea>
+      </div>
+      <div>
+        <label>Teléfono</label>
+        <input
+          type="tel"
+          class="form-control"
+          formControlName="telefono"
+          placeholder="Teléfono"
+          required
+        />
+      </div>
+      <div>
+        <label>Sexo</label>
+        <select class="form-control" formControlName="sexo" required>
+          <option value="">Selecciona un género</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <button type="submit">Registrarse</button>
+    </form>
+  </div>
 </div>

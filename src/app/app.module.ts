@@ -7,12 +7,14 @@ import { CoreModule } from './core/core.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/interceptors/authconfig.interceptor';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PacientesSiteComponent } from './pages/pacientes-site/pacientes-site.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PacientesSiteComponent
    
   ],
   imports: [
@@ -21,6 +23,7 @@ import { AuthInterceptor } from './core/services/interceptors/authconfig.interce
     CoreModule,
     FontAwesomeModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

@@ -1,0 +1,4 @@
+<button mat-button [ngClass]="selectedTab === 'datos' ? 'selected' : ''" (click)="selectTab('datos')">Datos</button>
+<button mat-button [ngClass]="selectedTab === 'documentos' ? 'selected' : 'Documentos'" (click)="selectTab('documentos')">Documentos</button>
+<button mat-button [ngClass]="selectedTab === 'before' ? 'selected' : ''" (click)="selectTab('before')">Before</button>
+<button mat-button [ngClass]="selectedTab === 'after' ? 'selected' : ''" (click)="selectTab('after')">After</button>

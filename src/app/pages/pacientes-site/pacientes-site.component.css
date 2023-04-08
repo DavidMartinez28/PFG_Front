@@ -1,0 +1,16 @@
+button{
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 15px;
+    border-radius: 15px;
+    width: 120px;
+    height: 30px;
+}
+
+button:hover{
+    background-color: #e6d7f3;
+}
+
+button.selected {
+    background-color: #e6d7f3;
+  }

@@ -11,6 +11,7 @@ export class AppComponent {
   constructor(
     public authService: AuthService,
   ) {  
+     this.authService.initUser();
      this.authService.userLoged$.subscribe(isloged => {
         this.userLoged = isloged
      }); 

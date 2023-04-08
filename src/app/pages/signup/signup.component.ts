@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
   registerUser() {
     if (this.signupType === 'Psicologo') {
       let form = this.psicologoForm;
-      this.authService.signUpPsicologo(form.value).subscribe((res) => {
+      this.authService.signup(form.value).subscribe((res) => {
         if (res.result) {
           form.reset();
           this.router.navigate(['log-in']);
@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
       });
     } else {
       let form = this.pacienteForm;
-      this.authService.signUpPaciente(form.value).subscribe((res) => {
+      this.authService.signup(form.value).subscribe((res) => {
         if (res.result) {
           form.reset();
           this.router.navigate(['log-in']);

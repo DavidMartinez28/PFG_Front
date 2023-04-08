@@ -1,0 +1,7 @@
+.card-container {
+    margin: 30px;
+  }
+
+.card-container:hover {
+    background-color: #e6d7f3;
+}
