@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
-  public isNavbarCollapsed: boolean = true;
+  public isNavbarCollapsed: boolean = false;
 
   toggleNavbar() {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;

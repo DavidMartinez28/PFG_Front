@@ -5,3 +5,9 @@
 .navbar{
     margin-right: 20px;
 }
+
+.scroll{
+    overflow: scroll;
+    width: 100%;
+    height: 100vh;
+}

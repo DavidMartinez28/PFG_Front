@@ -2,3 +2,80 @@
 <button mat-button [ngClass]="selectedTab === 'documentos' ? 'selected' : 'Documentos'" (click)="selectTab('documentos')">Documentos</button>
 <button mat-button [ngClass]="selectedTab === 'before' ? 'selected' : ''" (click)="selectTab('before')">Before</button>
 <button mat-button [ngClass]="selectedTab === 'after' ? 'selected' : ''" (click)="selectTab('after')">After</button>
+
+<div class="container" *ngIf="selectedTab === 'datos'" >
+    <form *ngIf="pacienteForm" [formGroup]="pacienteForm" class="form-wrapper">
+      <h3>Informacion del paciente</h3>
+      <div>
+        <label for="email">Correo:</label>
+        <input type="text" id="email" name="email" formControlName="email" readonly/>
+      </div>
+      <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" formControlName="name" readonly/>
+      </div>
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <textarea
+          id="descripcion"
+          name="descripcion"
+          formControlName="descripcion"
+          readonly
+        ></textarea>
+      </div>
+      <div>
+        <label for="telefono">Teléfono:</label>
+        <input
+          type="text"
+          id="telefono"
+          name="telefono"
+          formControlName="telefono"
+          readonly
+        />
+      </div>
+      <div>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input
+          type="date"
+          id="fecha_nacimiento"
+          name="fecha_nacimiento"
+          formControlName="fecha_nacimiento"
+          readonly
+        />
+      </div>
+      <div>
+        <label for="sexo">Sexo:</label>
+        <input id="sexo" name="sexo" formControlName="sexo" readonly/>
+      </div>
+    </form>
+  </div>
+
+  
+<div *ngIf="selectedTab === 'documentos'">
+  <div class="archivo">
+    <span>Adjuntar archivo</span>
+    <input type="file" (change)="getFile($event)">
+  </div>
+  
+  <div>
+    <button (click)="sendFile()">Enviar</button>
+  </div>
+
+  <div class="card-container">
+    <ng-container *ngFor="let documentos of documentos">
+      <mat-card
+        class="card"
+      >
+        <mat-card-header (click)="openDocumento(documentos)">
+          <mat-card-title-group>
+            <mat-card-title>{{ documentos.nameFile }}</mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+      </mat-card>
+    </ng-container>
+  </div>
+
+</div>
+
+
+

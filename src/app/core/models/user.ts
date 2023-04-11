@@ -60,3 +60,16 @@ export interface PacientePsicologo {
  
 }
 
+export interface Documentos {
+   _id: string;
+   id_psicologo: string;
+   id_paciente: string;
+   urlFile: string;
+   nameFile: string;
+   estado: string;
+   createdAt: Date;
+   updatedAt: Date;
+   __v: number;
+ 
+}
+

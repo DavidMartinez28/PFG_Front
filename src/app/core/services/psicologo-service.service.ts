@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {PacientePsicologo,SignInResponse, User, UserProfile, UserResponse } from '../models/user';
+import {Documentos, PacientePsicologo,SignInResponse, User, UserProfile, UserResponse } from '../models/user';
 import { Observable, ReplaySubject, Subject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -27,6 +27,24 @@ export class PsicologoServiceService {
       );
   }
 
+  getPacienteById(pacienteId: string): Observable<UserProfile> {
+    return this.http.get<UserProfile>(`${this.endpoint}/paciente/${pacienteId}`, {headers: this.headers})
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  sendPost(body: FormData): Observable<any>{
+    return this.http.post(`${this.endpoint}/upload`, body)
+  }
+
+  getDocuments(psicologoId: string, pacienteId: string): Observable<Documentos[]> {
+    return this.http.get<Documentos[]>(`${this.endpoint}/psicologos/${psicologoId}/${pacienteId}/documentos`, {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
   handleError(error: HttpErrorResponse) {
     let msg = '';
@@ -39,4 +57,5 @@ export class PsicologoServiceService {
     }
     return throwError(msg);
   }
+
 }

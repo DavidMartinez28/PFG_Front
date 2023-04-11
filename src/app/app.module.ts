@@ -14,7 +14,6 @@ import { PacientesSiteComponent } from './pages/pacientes-site/pacientes-site.co
 @NgModule({
   declarations: [
     AppComponent,
-    PacientesSiteComponent
    
   ],
   imports: [

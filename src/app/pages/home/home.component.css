@@ -1,7 +1,14 @@
 .card-container {
-    margin: 30px;
-  }
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
 
-.card-container:hover {
-    background-color: #e6d7f3;
+.card{
+  width: calc(50% - 32px);
+  margin: 16px;
+}
+.card:hover{
+  background-color: #e6d7f3;
 }

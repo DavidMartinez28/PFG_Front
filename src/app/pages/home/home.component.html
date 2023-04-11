@@ -1,5 +1,10 @@
-<ng-container *ngFor="let paciente of pacientes">
-    <mat-card class="card-container" [routerLink]="['/pacientes-site', paciente.id_paciente._id]" [queryParams]="{ tab: 'datos' }">
+<div class="card-container">
+  <ng-container *ngFor="let paciente of pacientes">
+    <mat-card
+      class="card"
+      [routerLink]="['/pacientes-site', paciente.id_paciente._id]"
+      [queryParams]="{ tab: 'datos' }"
+    >
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title>{{ paciente.id_paciente.name }}</mat-card-title>
@@ -16,4 +21,5 @@
         paciente.id_paciente.descripcion
       }}</mat-card-content>
     </mat-card>
-</ng-container>
+  </ng-container>
+</div>

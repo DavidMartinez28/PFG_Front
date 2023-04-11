@@ -20,7 +20,6 @@ export class HomeComponent {
     if (psicologoId) {
       this.psicologoService.getPacientes(psicologoId).subscribe((data) => {
         this.pacientes = data;
-        console.log(this.pacientes[0].id_paciente.name);
       });
     }
   }
