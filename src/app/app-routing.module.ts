@@ -29,11 +29,27 @@ const routes: Routes = [
     path: 'log-in', loadChildren: () =>
       import('./pages/signin/signin.module').then(m => m.SigninModule)
   },
+  {
+    path: 'psicologos', loadChildren: () =>
+      import('./pages/psicologos/psicologos.module').then(m => m.PsicologosModule),
+      canActivate: [AuthGuard]
+  },
+  {
+    path: 'invitaciones-pacientes', loadChildren: () =>
+      import('./pages/invitaciones-pacientes/invitaciones-pacientes.module').then(m => m.InvitacionesPacientesModule),
+      canActivate: [AuthGuard]
+  },
+  {
+    path: 'sesiones-pacientes', loadChildren: () =>
+      import('./pages/sesiones-pacientes/sesiones-pacientes.module').then(m => m.SesionesPacientesModule),
+      canActivate: [AuthGuard]
+  },
   { path: '', redirectTo: '/sign-up', pathMatch: 'full' },
 
   {
     path: 'pacientes-site/:id',loadChildren: () =>
-    import('./pages/pacientes-site/pacientes-site.module').then(p => p.PacientesSiteModule)
+    import('./pages/pacientes-site/pacientes-site.module').then(p => p.PacientesSiteModule),
+    canActivate: [AuthGuard]
   }
 ];
 

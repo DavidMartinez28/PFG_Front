@@ -11,26 +11,26 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  userForm!: FormGroup;
+  userForm?: FormGroup;
   user?: UserResponse; //Aquí almacenaremos los datos del usuario logeado
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    if (!this.authService.currentUser){
-      return 
-    }
-    this.user = this.authService.currentUser;
-    console.log(this.user);
-
-    this.userForm = this.fb.group({
-      email:[this.user.user.email],
-      name: [this.user?.profile.name],
-      descripcion: [this.user?.profile.descripcion],
-      telefono: [this.user?.profile.telefono],
-      fecha_nacimiento: [new Date(this.user.profile.fecha_nacimiento).toISOString().substring(0, 10)],
-      sexo: [this.user?.profile.sexo],
-    });
+    this.authService.userLoged$.subscribe(isloged => {
+      if (!this.authService.currentUser || !isloged){
+        return
+      }
+      this.user = this.authService.currentUser;
+      this.userForm = this.fb.group({
+        email:[this.user.user.email],
+        name: [this.user?.profile.name],
+        descripcion: [this.user?.profile.descripcion],
+        telefono: [this.user?.profile.telefono],
+        fecha_nacimiento: [new Date(this.user.profile.fecha_nacimiento).toISOString().substring(0, 10)],
+        sexo: [this.user?.profile.sexo],
+      });
+    }); 
   }
 
 }

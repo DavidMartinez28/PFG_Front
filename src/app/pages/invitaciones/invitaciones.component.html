@@ -1,1 +1,19 @@
-<p>invitaciones works!</p>
+<div class="search-container">
+  <input matInput placeholder="Buscar pacientes" name="filterPost" [(ngModel)]="filterPost">
+</div>
+
+<div class="card-container">
+    <ng-container *ngFor="let pacientes of pacientes | filter:filterPost" >
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ pacientes.name }}</mat-card-title>
+            <mat-card-subtitle>Correo: {{ pacientes.email }}</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-actions class="mat-card-actions">
+          <button mat-raised-button color="primary" (click)="invite(pacientes)">Invitar</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>

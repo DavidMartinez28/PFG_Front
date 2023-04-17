@@ -6,11 +6,13 @@ import { PacienteDatosComponent } from './paciente-datos/paciente-datos.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { PacientesSiteComponent } from './pacientes-site.component';
 import {MatCardModule} from '@angular/material/card';
+import { PacientesDocumentsComponent } from './pacientes-documents/pacientes-documents.component';
 
 @NgModule({
   declarations: [
     PacienteDatosComponent,
-    PacientesSiteComponent
+    PacientesSiteComponent,
+    PacientesDocumentsComponent
   ],
   imports: [
     CommonModule,

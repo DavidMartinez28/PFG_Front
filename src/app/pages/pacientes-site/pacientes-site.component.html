@@ -1,57 +1,99 @@
-<button mat-button [ngClass]="selectedTab === 'datos' ? 'selected' : ''" (click)="selectTab('datos')">Datos</button>
-<button mat-button [ngClass]="selectedTab === 'documentos' ? 'selected' : 'Documentos'" (click)="selectTab('documentos')">Documentos</button>
-<button mat-button [ngClass]="selectedTab === 'before' ? 'selected' : ''" (click)="selectTab('before')">Before</button>
-<button mat-button [ngClass]="selectedTab === 'after' ? 'selected' : ''" (click)="selectTab('after')">After</button>
+<div class="position-button">
+  <button
+    mat-button
+    [ngClass]="selectedTab === 'datos' ? 'selected' : ''"
+    (click)="selectTab('datos')"
+  >
+    Datos
+  </button>
+  <button
+    mat-button
+    [ngClass]="selectedTab === 'documentos' ? 'selected' : 'Documentos'"
+    (click)="selectTab('documentos')"
+  >
+    Documentos
+  </button>
+  <button
+    mat-button
+    [ngClass]="selectedTab === 'before' ? 'selected' : ''"
+    (click)="selectTab('before')"
+  >
+    Before
+  </button>
+  <button
+    mat-button
+    [ngClass]="selectedTab === 'after' ? 'selected' : ''"
+    (click)="selectTab('after')"
+  >
+    After
+  </button>
+</div>
 
-<div class="container" *ngIf="selectedTab === 'datos'" >
-    <form *ngIf="pacienteForm" [formGroup]="pacienteForm" class="form-wrapper">
-      <h3>Informacion del paciente</h3>
-      <div>
-        <label for="email">Correo:</label>
-        <input type="text" id="email" name="email" formControlName="email" readonly/>
-      </div>
-      <div>
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" formControlName="name" readonly/>
-      </div>
-      <div>
-        <label for="descripcion">Descripción:</label>
-        <textarea
-          id="descripcion"
-          name="descripcion"
-          formControlName="descripcion"
-          readonly
-        ></textarea>
-      </div>
-      <div>
-        <label for="telefono">Teléfono:</label>
-        <input
-          type="text"
-          id="telefono"
-          name="telefono"
-          formControlName="telefono"
-          readonly
-        />
-      </div>
-      <div>
-        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-        <input
-          type="date"
-          id="fecha_nacimiento"
-          name="fecha_nacimiento"
-          formControlName="fecha_nacimiento"
-          readonly
-        />
-      </div>
-      <div>
-        <label for="sexo">Sexo:</label>
-        <input id="sexo" name="sexo" formControlName="sexo" readonly/>
-      </div>
-    </form>
-  </div>
+<div class="container" *ngIf="selectedTab === 'datos'">
+  <form *ngIf="pacienteForm" [formGroup]="pacienteForm" class="form-wrapper">
+    <h3>Informacion del paciente</h3>
+    <div>
+      <label for="email">Correo:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        formControlName="email"
+        readonly
+      />
+    </div>
+    <div>
+      <label for="name">Nombre:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name"
+        readonly
+      />
+    </div>
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        formControlName="descripcion"
+        readonly
+      ></textarea>
+    </div>
+    <div>
+      <label for="telefono">Teléfono:</label>
+      <input
+        type="text"
+        id="telefono"
+        name="telefono"
+        formControlName="telefono"
+        readonly
+      />
+    </div>
+    <div>
+      <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+      <input
+        type="date"
+        id="fecha_nacimiento"
+        name="fecha_nacimiento"
+        formControlName="fecha_nacimiento"
+        readonly
+      />
+    </div>
+    <div>
+      <label for="sexo">Sexo:</label>
+      <input id="sexo" name="sexo" formControlName="sexo" readonly />
+    </div>
+  </form>
+</div>
 
-  
-<div *ngIf="selectedTab === 'documentos'">
+<app-pacientes-documents
+  *ngIf="selectedTab === 'documentos' && paciente"
+  [pacienteId]="paciente._id"
+></app-pacientes-documents>
+
+<!-- <div *ngIf="selectedTab === 'documentos'">
   <div class="archivo">
     <span>Adjuntar archivo</span>
     <input type="file" (change)="getFile($event)">
@@ -75,7 +117,5 @@
     </ng-container>
   </div>
 
-</div>
 
-
-
+</div> -->

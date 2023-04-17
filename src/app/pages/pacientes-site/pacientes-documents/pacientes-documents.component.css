@@ -1,0 +1,74 @@
+.card-container {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.card {
+  width: calc(20% - 20px);
+  margin: 40px;
+}
+.card:hover {
+  background-color: #e6d7f3;
+}
+
+.card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 8px;
+}
+
+.archivo {
+  margin-top: 50px;
+  width: 30%;
+}
+
+button {
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 15px;
+    border-radius: 15px;
+    width: 120px;
+    height: 30px;
+  }
+  
+  button:hover {
+    background-color: #e6d7f3;
+  }
+  
+  button.selected {
+    background-color: #e6d7f3;
+  }
+
+input,
+textarea,
+select {
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex-basis: calc(25% - 40px); 
+  margin: 20px;
+  
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-basis: 100%;
+  }
+}
+.card:hover{
+  background-color: #e6d7f3;
+}

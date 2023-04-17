@@ -1,0 +1,21 @@
+<div class="archivo">
+    <span>Adjuntar archivo</span>
+    <input type="file" (change)="getFile($event)">
+    <div *ngIf="loading">Cargando...</div>
+</div>
+
+<div>
+    <button (click)="sendFile()">Enviar</button>
+</div>
+
+<div class="card-container">
+    <ng-container *ngFor="let documentos of documentos">
+        <mat-card
+            class="card"
+        >
+            <mat-card-header (click)="openDocumento(documentos)">
+                <p class="card-title">{{ documentos.nameFile }}<p>
+            </mat-card-header>
+        </mat-card>
+    </ng-container>
+</div>

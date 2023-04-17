@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Documentos, UserProfile } from 'src/app/core/models/user';
 import { PsicologoServiceService } from 'src/app/core/services/psicologo-service.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-pacientes-site',
@@ -15,15 +14,12 @@ export class PacientesSiteComponent implements OnInit {
   selectedTab = 'datos';
   paciente?: UserProfile;
   pacienteForm?: FormGroup;
-  private fileTmp: any;
-  documentos?: Documentos[] = [];
 
   constructor(
     public route: ActivatedRoute,
     private router: Router,
     public psicologoService: PsicologoServiceService,
     public fb: FormBuilder,
-    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -39,12 +35,6 @@ export class PacientesSiteComponent implements OnInit {
           this.initPacienteForm();
         });
     }
-      const psicologoId = this.authService.getUserId();
-      if (psicologoId && pacienteId) {
-        this.psicologoService.getDocuments(psicologoId, pacienteId).subscribe((data) => {
-          this.documentos = data;
-        });
-      }   
   }
 
   selectTab(tab: string) {
@@ -69,28 +59,6 @@ export class PacientesSiteComponent implements OnInit {
       descripcion: [this.paciente.descripcion],
       sexo: [this.paciente.sexo],
     });
-  }
-
-  getFile($event: any): void {
-    const [file] = $event.target.files;
-    this.fileTmp = {
-      fileRaw: file,
-      fileName: file.name,
-    };
-  }
-
-  sendFile(): void {
-    const body = new FormData();
-    body.append('myFile', this.fileTmp.fileRaw, this.fileTmp.fileName);
-    body.append('id_psicologo', this.authService.getUserId() || '');
-    body.append('id_paciente', this.route.snapshot.paramMap.get('id') || '');
-    body.set('estado', 'notVisible');
-    this.psicologoService.sendPost(body).subscribe((res) => console.log(res));
-    location.reload()
-  }
-
-  openDocumento(documento: Documentos) {
-    window.open(documento.urlFile, '_blank');
   }
 
 }

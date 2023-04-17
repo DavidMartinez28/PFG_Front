@@ -22,10 +22,11 @@ export class AuthService {
   ) {}
 
   public initUser() {
-    this.userLoged$.next(this.isLoggedIn)
     const userId = this.getUserId();
     if (userId) {
-      this.getUserProfile(userId).subscribe();
+      this.getUserProfile(userId).subscribe(() => this.userLoged$.next(true));
+    } else {
+      this.userLoged$.next(false)
     }
   }
 
@@ -34,7 +35,7 @@ export class AuthService {
     let api = `${this.endpoint}/register-user`;
     return this.http.post(api, user)
       .pipe(
-        catchError(this.handleError)
+        catchError(this.handleError.bind(this))
       )
   }
 
@@ -47,9 +48,9 @@ export class AuthService {
           token: res.token
         });
         localStorage.setItem('access_token', user);
-        this.userLoged$.next(true);
 				//Seteamos el token
         this.getUserProfile(res._id).subscribe((res) => {
+          this.userLoged$.next(true);
           this.router.navigate(['user-profile']);
 				//Volvemos al user-profile una vez ejecutada la función
         })
@@ -87,8 +88,9 @@ export class AuthService {
   getUserProfile(id: string): Observable<UserResponse> {
     let api = `${this.endpoint}/user-profile/${id}`;
     return this.http.get<UserResponse>(api, { headers: this.headers }).pipe(
-      catchError(this.handleError),
+      catchError(this.handleError.bind(this)),
       tap((user) => {
+        console.log(user);
         this.currentUser = user;
       })
     )
@@ -97,6 +99,9 @@ export class AuthService {
   // Error 
   handleError(error: HttpErrorResponse) {
     let msg = '';
+    if (error.error === 'jwt expired'){
+      this.doLogout();
+    }
     if (error.error instanceof ErrorEvent) {
       // client-side error
       msg = error.error.message;

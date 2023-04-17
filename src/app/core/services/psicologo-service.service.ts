@@ -4,6 +4,7 @@ import { Observable, ReplaySubject, Subject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Invitaciones, Pacientes } from 'src/app/pages/invitaciones/models/invitaciones.models';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,25 @@ export class PsicologoServiceService {
         catchError(this.handleError)
       );
   }
+
+  getAllPacientes(): Observable<Pacientes[]> {
+    return this.http.get<Pacientes[]>(`${this.endpoint}/pacientes`, {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getPacientesInvitables(psicologoId: string): Observable<Pacientes[]> {
+    return this.http.get<Pacientes[]>(`${this.endpoint}/psicologo/${psicologoId}/pacientes-invitables`, {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  createInvitacion(invitacion: Invitaciones): Observable<any> {
+    return this.http.post(`${this.endpoint}/invitaciones`, invitacion);
+  }
+
 
   getPacienteById(pacienteId: string): Observable<UserProfile> {
     return this.http.get<UserProfile>(`${this.endpoint}/paciente/${pacienteId}`, {headers: this.headers})
