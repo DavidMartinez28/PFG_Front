@@ -1,12 +1,20 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  
 }
 
 .card {
-  flex-basis: calc(50% - 40px); 
+  flex-basis: calc(33% - 40px); 
   margin: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0.5rem 0.5rem 1rem #696969;
+/*   margin-left: -50px; */
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+  color: #917FB3;
   
 }
 
@@ -16,6 +24,43 @@
   }
 }
 .card:hover{
-  background-color: #e6d7f3;
+  background-color: #f2e9f8;
 }
 
+
+.card:hover {
+  transform: translateY(-6px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+
+  transition: 0.4s ease-out;
+}
+
+.img{
+   border-radius: 50%;
+   overflow: hidden;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  margin: 20px;
+}
+
+.search-container input {
+  flex: 1;
+  margin-right: 16px;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+}

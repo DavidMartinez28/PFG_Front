@@ -1,21 +1,20 @@
 <div class="archivo">
-    <span>Adjuntar archivo</span>
-    <input type="file" (change)="getFile($event)">
-    <div *ngIf="loading">Cargando...</div>
+  <span>Adjuntar archivo</span>
+  <input type="file" (change)="getFile($event)" />
+  <div *ngIf="loading">Cargando...</div>
 </div>
 
 <div>
-    <button (click)="sendFile()">Enviar</button>
+  <button (click)="sendFile()">Enviar</button>
 </div>
 
-<div class="card-container">
-    <ng-container *ngFor="let documentos of documentos">
-        <mat-card
-            class="card"
-        >
-            <mat-card-header (click)="openDocumento(documentos)">
-                <p class="card-title">{{ documentos.nameFile }}<p>
-            </mat-card-header>
-        </mat-card>
-    </ng-container>
+<div class="documentos-container">
+  <div
+    class="card-container"
+    *ngFor="let documentos of documentos; let i = index"
+    (click)="openDocumento(documentos)"
+  >
+      <img src="../../../../assets/pdf.png" />
+      <p class="document-name">{{ documentos.nameFile }}</p>
+  </div>
 </div>

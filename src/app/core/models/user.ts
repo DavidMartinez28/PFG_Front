@@ -60,6 +60,24 @@ export interface PacientePsicologo {
  
 }
 
+export interface PsicologoPaciente {
+  _id: string;
+  id_psicologo: {
+    _id: string;
+    name: string;
+    email: string;
+    fecha_nacimiento: string;
+    telefono: number;
+    sexo: string;
+    descripcion: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+  id_paciente: string;
+ 
+}
+
 export interface Documentos {
    _id: string;
    id_psicologo: string;

@@ -1,8 +1,9 @@
 <nav [ngClass]="{ collapsed: isNavbarCollapsed }" class="navbar">
   <div class="nav-div">
-    <button *ngIf="!isMobile" (click)="toggleNavbar()" class="nav-div">
-      Toggle Navbar
-    </button>
+    <div *ngIf="!isMobile" (click)="toggleNavbar()" class="nav-div toggleNavbar">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+    
 
     <ul class="element-list">
       <a
@@ -18,7 +19,7 @@
           [routerLink]="[option.enlace]"
           routerLinkActive="link-active"
         >
-          <i [ngClass]="[option.icono]" class="iconos" aria-hidden="true"></i>
+        <i class="{{option.icono}} iconos" aria-hidden="true"></i>
           <span *ngIf="!isNavbarCollapsed" class="navbar-text">{{option.texto}}</span>
         </a>
       </li>
@@ -39,7 +40,7 @@
         [routerLink]="[option.enlace]"
         routerLinkActive="link-active"
       >
-        <i [ngClass]="[option.icono]" class="iconos" aria-hidden="true"></i>
+      <i class="{{option.icono}} iconos" aria-hidden="true"></i>
       </a>
     </li>
     <li>

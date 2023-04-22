@@ -1,1 +1,29 @@
-<p>psicologos works!</p>
+<div class="search-container">
+    <input matInput placeholder="Buscar pacientes">
+  </div>
+  
+  <div class="card-container">
+    <ng-container *ngFor="let psicologo of psicologos">
+      <mat-card
+        class="card"
+        [routerLink]="['/psicologos-site', psicologo.id_psicologo._id]"
+        [queryParams]="{ tab: 'datos' }"
+      >
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{psicologo.id_psicologo.name}}</mat-card-title>
+            <mat-card-subtitle
+              >{{psicologo.id_psicologo.email}}</mat-card-subtitle
+            >
+            <div class="img">
+              <img
+                mat-card-sm-image
+                src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              />
+            </div>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content></mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>

@@ -4,7 +4,8 @@ import { Observable, ReplaySubject, Subject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Invitaciones, Pacientes } from 'src/app/pages/invitaciones/models/invitaciones.models';
+import { Invitaciones, InvitacionesPendientes, Pacientes, Relacion } from 'src/app/pages/invitaciones/models/invitaciones.models';
+import { Sesion } from 'src/app/pages/sesiones/models/sesiones';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,24 @@ export class PsicologoServiceService {
     return this.http.post(`${this.endpoint}/invitaciones`, invitacion);
   }
 
+  deleteInvitacion(idInvitacion: string): Observable<any> {
+    return this.http.delete(`${this.endpoint}/delete-invitaciones/${idInvitacion}`);
+  }
+
+  getInvitaciones(psicologoId: string): Observable<InvitacionesPendientes[]> {
+    return this.http.get<InvitacionesPendientes[]>(`${this.endpoint}/psicologos/${psicologoId}/invitaciones`, {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getInvitacionesPacientes(pacienteId: string): Observable<InvitacionesPendientes[]> {
+    return this.http.get<InvitacionesPendientes[]>(`${this.endpoint}/pacientes/${pacienteId}/invitaciones`, {headers: this.headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
   getPacienteById(pacienteId: string): Observable<UserProfile> {
     return this.http.get<UserProfile>(`${this.endpoint}/paciente/${pacienteId}`, {headers: this.headers})
@@ -63,6 +82,14 @@ export class PsicologoServiceService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  crearSesion(sesion: Sesion): Observable<Sesion> {
+    let api = `${this.endpoint}/create-sesion`;
+    return this.http.post<Sesion>(api, sesion)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      )
   }
 
 

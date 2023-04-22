@@ -1,23 +1,20 @@
-<div class="search-container">
-    <input matInput placeholder="Buscar pacientes" name="filterPost">
-</div>
+<button [routerLink]="['/invitaciones']" routerLinkActive="link-active">
+    <i class="fa fa-plus-circle iconos" aria-hidden="true"></i>
+    <span>Invitar paciente</span> 
+</button>
 
 <div class="card-container">
     <ng-container *ngFor="let invitacion of invitaciones">
       <mat-card class="card">
         <mat-card-header>
           <mat-card-title-group>
-            <mat-card-title>{{ invitacion.psicologo_nombre }}</mat-card-title>
+            <mat-card-title>{{ invitacion.paciente_nombre }}</mat-card-title>
             <mat-card-subtitle>Estado: {{ invitacion.estado}}</mat-card-subtitle>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-actions class="mat-card-actions">
-            <button (click)="crearRelacion(invitacion.id_psicologo); deleteInvitacion(invitacion._id)">Aceptar</button>
+          <button (click)="deleteInvitacion(invitacion._id)">Eliminar</button>
         </mat-card-actions>
       </mat-card>
     </ng-container>
-</div>
-
-<div *ngIf="successMessage" class="success-message" [class.show-message]="successMessage">
-    {{ successMessage }}
 </div>

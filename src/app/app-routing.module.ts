@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/invitaciones/invitaciones.module').then(i => i.InvitacionesModule)
   },
   {
+    path: 'invitaciones-pendientes',
+    loadChildren: () => import('./pages/invitaciones-pendientes/invitaciones-pendientes.module').then(i => i.InvitacionesPendientesModule)
+  },
+  {
     path: 'sesiones',
     loadChildren: () => import('./pages/sesiones/sesiones.module').then(i => i.SesionesModule)
   },
@@ -49,6 +53,11 @@ const routes: Routes = [
   {
     path: 'pacientes-site/:id',loadChildren: () =>
     import('./pages/pacientes-site/pacientes-site.module').then(p => p.PacientesSiteModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'psicologos-site/:id',loadChildren: () =>
+    import('./pages/psicologos-site/psicologos-site.module').then(p => p.PsicologosSiteModule),
     canActivate: [AuthGuard]
   }
 ];

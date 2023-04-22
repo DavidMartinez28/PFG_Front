@@ -1,1 +1,41 @@
-<p>sesiones works!</p>
+
+<button class="button-sesion" (click)="modalVisible = true">
+  <i class="fa fa-plus-circle iconos" aria-hidden="true"></i>
+  <span>Crear sesión</span>
+</button>
+
+<div
+  *ngIf="modalVisible"
+  class="modal-background"
+  (click)="modalVisible = false"
+></div>
+
+<div *ngIf="modalVisible" class="modal">
+  <span class="modal-close" (click)="modalVisible = false">&times;</span>
+
+  <form
+    [formGroup]="sesionForm"
+    (ngSubmit)="crearSesion()"
+    class="form-wrapper"
+  >
+    <label for="fecha">Fecha de la sesión:</label>
+    <input type="datetime-local" id="fecha" formControlName="fecha" />
+
+
+    <label for="paciente">Paciente:</label>
+    <select id="paciente" formControlName="id_paciente">
+      <option
+        *ngFor="let paciente of pacientes"
+        [value]="paciente.id_paciente._id"
+      >
+        {{ paciente.id_paciente.name }}
+      </option>
+    </select>
+
+    <button class="button-form" type="submit">Crear sesión</button>
+  </form>
+</div>
+
+<div *ngIf="successMessage" class="success-message" [class.show-message]="successMessage">
+  {{ successMessage }}
+</div>

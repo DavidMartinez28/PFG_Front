@@ -6,7 +6,7 @@
   }
   
   .form-wrapper {
-    width: 400px;
+    width: 500px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -46,12 +46,15 @@
   }
 
   .image-wrapper {
-    flex: 1;
-    max-width: 50%;
-    margin-left: 300px;
-    width: 700px;
-    height: auto;
+    width: 50%;
+    margin: 0 70px;
   }
+
+  .image{
+    width: 100%;
+    
+  }
+
   h3 {
     font-size: 30px;
     font-weight: bold;

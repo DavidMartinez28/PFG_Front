@@ -5,8 +5,6 @@
     height: 100vh;
   }
   .form-header {
-    max-width: 400px;
-    width: 100%;
     margin-bottom: 30px;
   }  
   
@@ -51,12 +49,15 @@
   }
 
   .image-wrapper {
-    flex: 1;
-    max-width: 50%;
-    margin-left: 300px;
-    width: 700px;
-    height: auto;
+    width: 50%;
+    margin: 0 70px;
   }
+
+  .image{
+    width: 100%;
+    
+  }
+  
   h3 {
     font-size: 30px;
     font-weight: bold;
