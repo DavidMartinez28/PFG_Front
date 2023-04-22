@@ -17,7 +17,7 @@ import { Relacion } from 'src/app/pages/invitaciones/models/invitaciones.models'
 })
 export class PacienteService {
   //Definimos el endpoint y los headers para poder realizar la petición
-  endpoint: string = 'http://localhost:300/api';
+  endpoint: string = 'https://psychogood.onrender.com/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, public router: Router) {}
