@@ -33,4 +33,8 @@ export class UserProfileComponent implements OnInit {
     }); 
   }
 
+  logOut(){
+    this.authService.doLogout();
+  }
+
 }

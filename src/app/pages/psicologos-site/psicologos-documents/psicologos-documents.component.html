@@ -1,0 +1,10 @@
+<div class="documentos-container">
+    <div
+      class="card-container"
+      *ngFor="let documento of documentos; let i = index"
+    >
+        <img src="../../../../assets/pdf.png" (click)="openDocumento(documento)"/>
+        <p class="document-name" (click)="openDocumento(documento)">{{ documento.nameFile }} </p>
+        
+    </div>
+</div>

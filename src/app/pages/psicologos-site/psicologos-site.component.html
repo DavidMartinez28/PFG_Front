@@ -13,20 +13,6 @@
     >
       Documentos
     </button>
-    <button
-      mat-button
-      [ngClass]="selectedTab === 'before' ? 'selected' : ''"
-      (click)="selectTab('before')"
-    >
-      Before
-    </button>
-    <button
-      mat-button
-      [ngClass]="selectedTab === 'after' ? 'selected' : ''"
-      (click)="selectTab('after')"
-    >
-      After
-    </button>
   </div>
   
   <div class="container" *ngIf="selectedTab === 'datos'">
@@ -87,3 +73,8 @@
       </div>
     </form>
   </div>
+
+<app-psicologos-documents
+  *ngIf="selectedTab === 'documentos' && psicologo"
+  [psicologoId]="psicologo._id"
+></app-psicologos-documents>

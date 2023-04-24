@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SesionesRoutingModule } from './sesiones-routing.module';
 import { SesionesComponent } from './sesiones.component';
+import { MatCardModule } from '@angular/material/card';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 @NgModule({
@@ -12,7 +15,9 @@ import { SesionesComponent } from './sesiones.component';
   imports: [
     CommonModule,
     SesionesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    MatCardModule,
+    FullCalendarModule
   ]
 })
 export class SesionesModule { }

@@ -11,10 +11,18 @@
 <div class="documentos-container">
   <div
     class="card-container"
-    *ngFor="let documentos of documentos; let i = index"
-    (click)="openDocumento(documentos)"
+    *ngFor="let documento of documentos; let i = index"
   >
-      <img src="../../../../assets/pdf.png" />
-      <p class="document-name">{{ documentos.nameFile }}</p>
+      <div class="eye-icon"
+        (click)="toggleVisibility(documento)"
+        [ngClass]="{
+          'eye-icon--visible': documento.estado === 'visible'
+        }"
+      >
+        <i class="fa fa-eye"></i>
+      </div>
+      <img src="../../../../assets/pdf.png" (click)="openDocumento(documento)" />
+      <p class="document-name" (click)="openDocumento(documento)">{{ documento.nameFile }}</p>
+      
   </div>
 </div>

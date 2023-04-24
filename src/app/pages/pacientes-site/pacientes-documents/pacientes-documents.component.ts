@@ -63,10 +63,17 @@ export class PacientesDocumentsComponent {
     window.open(documento.urlFile, '_blank');
   }
 
+  toggleVisibility(documento: Documentos) {
+    documento.estado = documento.estado === 'visible' ? 'notVisible' : 'visible';
+    // Llamas al servicio put con lo que te haga falta
+    this.psicologoService.cambiarVisibilidad(documento).subscribe();
+  }
+
   private getDocuments() {
     if (!this.psicologoId || !this.pacienteId) { return; }
     this.psicologoService.getDocuments(this.psicologoId, this.pacienteId).subscribe((data) => {
       this.documentos = data;
     });
   }
+
 }

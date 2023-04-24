@@ -68,3 +68,12 @@ select {
 .card:hover{
   background-color: #e6d7f3;
 }
+
+.eye-icon {
+ margin-left: auto;
+ color: grey;
+}
+
+.eye-icon--visible {
+  color: blue;
+}

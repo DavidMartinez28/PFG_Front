@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MatCardModule } from '@angular/material/card';
 import { SesionesPacientesRoutingModule } from './sesiones-pacientes-routing.module';
 import { SesionesPacientesComponent } from './sesiones-pacientes.component';
 
@@ -11,7 +11,8 @@ import { SesionesPacientesComponent } from './sesiones-pacientes.component';
   ],
   imports: [
     CommonModule,
-    SesionesPacientesRoutingModule
+    SesionesPacientesRoutingModule,
+    MatCardModule
   ]
 })
 export class SesionesPacientesModule { }
