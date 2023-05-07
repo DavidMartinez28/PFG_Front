@@ -1,6 +1,6 @@
-import { Time } from "@angular/common";
 
 export interface Sesion {
+  _id: string;
     fecha: Date;
     id_paciente: string;
     id_psicologo: string;

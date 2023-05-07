@@ -1,6 +1,6 @@
 <div class="container">
   <div class="image-wrapper">
-    <img src="../../../assets/logo-login.png" class="image"/>
+    <img src="../../../assets/logo.png" class="image"/>
   </div>
   <div class="form-header">
     <h3>Crea tu cuenta en PsychoGood</h3>
@@ -17,8 +17,9 @@
       [formGroup]="psicologoForm"
       (submit)="registerUser()"
       class="form-wrapper"
+      
     >
-      <div>
+      <div class="form-wrapper-div">
         <label>Email address</label>
         <input
           type="email"
@@ -26,8 +27,12 @@
           formControlName="email"
           required
         />
+        <div *ngIf="psicologoForm.get('email')?.invalid && (psicologoForm.get('email')?.dirty || psicologoForm.get('email')?.touched)">
+          <div class="error-messages" *ngIf="psicologoForm.get('email')?.errors?.['required']">Campo obligatorio</div>
+          <div class="error-messages" *ngIf="psicologoForm.get('email')?.errors?.['email']">Formato de correo inválido</div>
+        </div>
       </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Password</label>
         <input
           type="password"
@@ -35,8 +40,12 @@
           formControlName="password"
           required
         />
+        <div *ngIf="psicologoForm.get('password')?.invalid && (psicologoForm.get('password')?.dirty || psicologoForm.get('password')?.touched)">
+          <div class="error-messages" *ngIf="psicologoForm.get('password')?.errors?.['required']">Campo obligatorio</div>
+          <div class="error-messages" *ngIf="psicologoForm.get('password')?.errors?.['minlength']">Contraseña inválida</div>
+        </div>
       </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Fecha de nacimiento</label>
         <input
           type="date"
@@ -44,8 +53,11 @@
           formControlName="fecha_nacimiento"
           required
         />
+        <div *ngIf="psicologoForm.get('fecha_nacimiento')?.invalid && (psicologoForm.get('fecha_nacimiento')?.dirty || psicologoForm.get('fecha_nacimiento')?.touched)">
+          <div class="error-messages" *ngIf="psicologoForm.get('fecha_nacimiento')?.errors?.['required']">Campo obligatorio</div>
+        </div>
       </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Nombre completo</label>
         <input
           type="text"
@@ -54,16 +66,11 @@
           
           required
         />
+        <div *ngIf="psicologoForm.get('name')?.invalid && (psicologoForm.get('name')?.dirty || psicologoForm.get('name')?.touched)">
+          <div class="error-messages" *ngIf="psicologoForm.get('name')?.errors?.['required']">Campo obligatorio</div>
+        </div>
       </div>
-      <div>
-        <label>Descripción</label>
-        <textarea
-          class="form-control"
-          formControlName="descripcion"
-          
-        ></textarea>
-      </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Teléfono</label>
         <input
           type="tel"
@@ -72,15 +79,31 @@
           
           required
         />
+        <div *ngIf="psicologoForm.get('telefono')?.invalid && (psicologoForm.get('telefono')?.dirty || psicologoForm.get('telefono')?.touched)">
+          <div class="error-messages" *ngIf="psicologoForm.get('telefono')?.errors?.['required']">Campo obligatorio</div>
+          <div class="error-messages" *ngIf="psicologoForm.get('telefono')?.errors?.['pattern']">Contraseña inválida</div>
+        </div>
       </div>
-      <div>
+      
+      <div class="form-wrapper-div">
         <label>Sexo</label>
-        <select class="form-control" formControlName="sexo" required>
+        <select  class="form-control" formControlName="sexo" required>
           <option value="">Selecciona un género</option>
           <option value="Masculino">Masculino</option>
           <option value="Femenino">Femenino</option>
           <option value="Otro">Otro</option>
         </select>
+        <div *ngIf="psicologoForm.get('sexo')?.invalid && (psicologoForm.get('sexo')?.dirty || psicologoForm.get('sexo')?.touched)">
+          <div class="error-messages" *ngIf="psicologoForm.get('sexo')?.errors?.['required']">Campo obligatorio</div>
+        </div>
+      </div>
+      <div >
+        <label>Descripción</label>
+        <textarea
+          class="form-control"
+          formControlName="descripcion"
+          
+        ></textarea>
       </div>
       <button type="submit">Registrarse</button>
     </form>
@@ -90,7 +113,7 @@
       (submit)="registerUser()"
       class="form-wrapper"
     >
-      <div>
+      <div class="form-wrapper-div">
         <label>Email address</label>
         <input
           type="email"
@@ -99,8 +122,12 @@
           
           required
         />
+        <div *ngIf="pacienteForm.get('email')?.invalid && (pacienteForm.get('email')?.dirty || pacienteForm.get('email')?.touched)">
+          <div class="error-messages" *ngIf="pacienteForm.get('email')?.errors?.['required']">Campo obligatorio</div>
+          <div class="error-messages" *ngIf="pacienteForm.get('email')?.errors?.['email']">Formato de correo inválido</div>
+        </div>
       </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Password</label>
         <input
           type="password"
@@ -109,8 +136,11 @@
           
           required
         />
+        <div *ngIf="pacienteForm.get('password')?.invalid && (pacienteForm.get('password')?.dirty || pacienteForm.get('password')?.touched)">
+          <div class="error-messages" *ngIf="pacienteForm.get('password')?.errors?.['required']">Campo obligatorio</div>
+        </div>
       </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Fecha de nacimiento</label>
         <input
           type="date"
@@ -118,8 +148,11 @@
           formControlName="fecha_nacimiento"
           required
         />
+        <div *ngIf="pacienteForm.get('fecha_nacimiento')?.invalid && (pacienteForm.get('fecha_nacimiento')?.dirty || pacienteForm.get('fecha_nacimiento')?.touched)">
+          <div class="error-messages" *ngIf="pacienteForm.get('fecha_nacimiento')?.errors?.['required']">Campo obligatorio</div>
+        </div>
       </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Nombre completo</label>
         <input
           type="text"
@@ -128,16 +161,11 @@
           
           required
         />
+        <div *ngIf="pacienteForm.get('name')?.invalid && (pacienteForm.get('name')?.dirty || pacienteForm.get('name')?.touched)">
+          <div class="error-messages" *ngIf="pacienteForm.get('name')?.errors?.['required']">Campo obligatorio</div>
+        </div>
       </div>
-      <div>
-        <label>Descripción</label>
-        <textarea
-          class="form-control"
-          formControlName="descripcion"
-          
-        ></textarea>
-      </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Teléfono</label>
         <input
           type="tel"
@@ -146,8 +174,11 @@
           
           required
         />
+        <div *ngIf="pacienteForm.get('telefono')?.invalid && (pacienteForm.get('telefono')?.dirty || pacienteForm.get('telefono')?.touched)">
+          <div class="error-messages" *ngIf="pacienteForm.get('telefono')?.errors?.['required']">Campo obligatorio</div>
+        </div>
       </div>
-      <div>
+      <div class="form-wrapper-div">
         <label>Sexo</label>
         <select class="form-control" formControlName="sexo" required>
           <option value="">Selecciona un género</option>
@@ -155,6 +186,18 @@
           <option value="Femenino">Femenino</option>
           <option value="Otro">Otro</option>
         </select>
+        <div *ngIf="pacienteForm.get('sexo')?.invalid && (pacienteForm.get('sexo')?.dirty || pacienteForm.get('sexo')?.touched)">
+          <div class="error-messages" *ngIf="pacienteForm.get('sexo')?.errors?.['required']">Campo obligatorio</div>
+        </div>
+      </div>
+      
+      <div>
+        <label>Descripción</label>
+        <textarea
+          class="form-control"
+          formControlName="descripcion"
+          
+        ></textarea>
       </div>
       <button type="submit">Registrarse</button>
     </form>

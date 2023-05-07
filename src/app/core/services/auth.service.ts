@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { SignInResponse, User, UserResponse } from '../models/user';
+import { SignInResponse, User, UserData, UserProfile, UserResponse } from '../models/user';
 import { Observable, ReplaySubject, Subject, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -40,21 +40,21 @@ export class AuthService {
   }
 
   // Sign-in
-  signIn(user: User) {
-    return this.http.post<SignInResponse>(`${this.endpoint}/signin`, user)
-      .subscribe((res: SignInResponse) => {
+  signIn(user: User): Observable<UserResponse> {
+    return this.http.post<SignInResponse>(`${this.endpoint}/signin`, user).pipe(
+      tap((res) => {
         const user = JSON.stringify({
           id: res._id,
           token: res.token
         });
         localStorage.setItem('access_token', user);
-				//Seteamos el token
-        this.getUserProfile(res._id).subscribe((res) => {
-          this.userLoged$.next(true);
-          this.router.navigate(['user-profile']);
-				//Volvemos al user-profile una vez ejecutada la función
-        })
+      }),
+      switchMap((res) => this.getUserProfile(res._id)),
+      tap(() => {
+        this.userLoged$.next(true);
+        this.router.navigate(['user-profile']);
       })
+    );
   }
 
   getToken(): string | undefined {
@@ -94,6 +94,13 @@ export class AuthService {
         this.currentUser = user;
       })
     )
+  }
+
+  cambiarPerfil(userId:string, user: UserProfile): Observable<UserData>{
+    return this.http.put<UserData>(`${this.endpoint}/update-user/${userId}`, user)
+    .pipe(
+      catchError(this.handleError.bind(this))
+    );
   }
 
   // Error 

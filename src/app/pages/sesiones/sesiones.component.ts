@@ -80,6 +80,7 @@ export class SesionesComponent {
           this.sesionesFormateadas = this.sesiones.map((sesion) => {
             const fecha = new Date(sesion.fecha);
             return {
+              _id: sesion._id,
               nombrePaciente: sesion.nombrePaciente,
               fecha: fecha.toLocaleDateString(),
               hora: `${fecha.getHours()}:${fecha
@@ -90,6 +91,23 @@ export class SesionesComponent {
           });
         });
     }
+  }
+
+  eliminarSesion(id: string){
+    this.psicologoService.eliminarSesion(id).subscribe((res) => {
+      this.obtenerSesiones();
+      if (res) {
+        this.sesionForm.reset();
+        this.obtenerSesiones()
+        this.modalVisible = false;
+        this.successMessage = 'La sesión ha sido eliminada con éxito';
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 3000); // 3000 milisegundos = 3 segundos
+      }
+       
+    });
+   
   }
 
 }

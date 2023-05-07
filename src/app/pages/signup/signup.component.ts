@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -19,48 +19,47 @@ export class SignupComponent implements OnInit {
     public router: Router
   ) {
     this.psicologoForm = this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['', Validators.email],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       type: ['Psicologo'],
-      fecha_nacimiento: [''],
-      name: [''],
-      correo: [''],
+      fecha_nacimiento: ['', Validators.required],
+      name: ['', Validators.required],
       descripcion: [''],
-      telefono: [''],
-      sexo: [''],
+      telefono: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
+      sexo: ['', Validators.required],
+      foto:['https://res.cloudinary.com/dz5dcbc6b/image/upload/v1682358778/perfil_vvau2l.png']
     });
     this.pacienteForm = this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['', Validators.email],
+      password: ['', Validators.required, Validators.minLength(6)],
       type: ['Paciente'],
-      fecha_nacimiento: [''],
-      name: [''],
-      correo: [''],
+      fecha_nacimiento: ['', Validators.required],
+      name: ['', Validators.required],
       descripcion: [''],
-      telefono: [''],
-      sexo: [''],
+      telefono: ['',Validators.required, Validators.pattern(/^\d{9}$/)],
+      sexo: ['', Validators.required],
+      foto:['https://res.cloudinary.com/dz5dcbc6b/image/upload/v1682358778/perfil_vvau2l.png']
     });
   }
 
   ngOnInit() {}
 
+
   registerUser() {
-    if (this.signupType === 'Psicologo') {
-      let form = this.psicologoForm;
-      this.authService.signup(form.value).subscribe((res) => {
-        if (res.result) {
-          form.reset();
-          this.router.navigate(['log-in']);
-        }
-      });
-    } else {
-      let form = this.pacienteForm;
-      this.authService.signup(form.value).subscribe((res) => {
-        if (res.result) {
-          form.reset();
-          this.router.navigate(['log-in']);
-        }
-      });
+    const form = this.signupType === 'Psicologo' ? this.psicologoForm : this.pacienteForm;
+    if (!form.valid) {
+      form.markAllAsTouched();
+      return;
     }
+    this.signup(form);
+  }
+
+  private signup(form: FormGroup) {
+    this.authService.signup(form.value).subscribe((res) => {
+      if (res.result) {
+        form.reset();
+        this.router.navigate(['log-in']);
+      }
+    });
   }
 }

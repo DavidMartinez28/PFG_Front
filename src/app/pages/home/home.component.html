@@ -1,9 +1,9 @@
 <div class="search-container">
-  <input matInput placeholder="Buscar pacientes" name="filterPost">
+  <input matInput placeholder="Buscar pacientes" name="filterPost" [(ngModel)]="filterPost">
 </div>
 
 <div class="card-container">
-  <ng-container *ngFor="let paciente of pacientes">
+  <ng-container *ngFor="let paciente of pacientes | filterPacientes:filterPost">
     <mat-card
       class="card"
       [routerLink]="['/pacientes-site', paciente.id_paciente._id]"
@@ -18,7 +18,7 @@
           <div class="img">
             <img
               mat-card-sm-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              [src]="paciente.id_paciente.foto"
             />
           </div>
         </mat-card-title-group>

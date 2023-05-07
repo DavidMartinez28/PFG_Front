@@ -21,20 +21,36 @@ export class UserProfileComponent implements OnInit {
       if (!this.authService.currentUser || !isloged){
         return
       }
-      this.user = this.authService.currentUser;
-      this.userForm = this.fb.group({
-        email:[this.user.user.email],
-        name: [this.user?.profile.name],
-        descripcion: [this.user?.profile.descripcion],
-        telefono: [this.user?.profile.telefono],
-        fecha_nacimiento: [new Date(this.user.profile.fecha_nacimiento).toISOString().substring(0, 10)],
-        sexo: [this.user?.profile.sexo],
-      });
+      this.getFormulario(this.authService.currentUser)
     }); 
   }
 
   logOut(){
     this.authService.doLogout();
+  }
+
+  getFormulario(user: UserResponse){
+    this.user = user;
+    if(!this.user){return;}
+    this.userForm = this.fb.group({
+      email:[this.user.user.email],
+      name: [this.user?.profile.name],
+      descripcion: [this.user?.profile.descripcion],
+      telefono: [this.user?.profile.telefono],
+      fecha_nacimiento: [new Date(this.user.profile.fecha_nacimiento).toISOString().substring(0, 10)],
+      sexo: [this.user?.profile.sexo],
+    });
+  }
+  
+  actualizarPerfil(){
+    const userId= this.authService.currentUser?.user._id
+    if(!userId){return;}
+   this.authService.cambiarPerfil(userId,this.userForm?.value).subscribe((data) => {
+    this.authService.getUserProfile(data._id).subscribe((user) => {
+      this.getFormulario(user);
+      
+    });
+   });
   }
 
 }

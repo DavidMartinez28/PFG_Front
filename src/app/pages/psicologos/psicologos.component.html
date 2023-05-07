@@ -1,9 +1,9 @@
 <div class="search-container">
-    <input matInput placeholder="Buscar pacientes">
+    <input matInput placeholder="Buscar psicologos" name="filterPost" [(ngModel)]="filterPost">
   </div>
   
   <div class="card-container">
-    <ng-container *ngFor="let psicologo of psicologos">
+    <ng-container *ngFor="let psicologo of psicologos | filterPsicologos:filterPost">
       <mat-card
         class="card"
         [routerLink]="['/psicologos-site', psicologo.id_psicologo._id]"

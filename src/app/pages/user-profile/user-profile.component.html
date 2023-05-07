@@ -1,7 +1,7 @@
 <button (click)="logOut()">Cerrar sesión</button>
 
 <div class="container" *ngIf="userForm">
-  <form [formGroup]="userForm" class="form-wrapper">
+  <form [formGroup]="userForm" class="form-wrapper" (submit)="actualizarPerfil()">
     <h3>Informacion personal</h3>
     <div>
       <label for="email">Correo:</label>
@@ -44,5 +44,6 @@
         <option value="Femenino">Femenino</option>
       </select>
     </div>
+    <button type="submit">Guardar Cambios</button>
   </form>
 </div>

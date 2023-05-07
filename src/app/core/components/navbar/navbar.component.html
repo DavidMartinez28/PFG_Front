@@ -6,13 +6,13 @@
     
 
     <ul class="element-list">
-      <a
+      <div
         class="profile-icon"
         [routerLink]="['user-profile']"
         routerLinkActive="link-active"
       >
-        <i class="fa fa-user-circle" aria-hidden="true"></i>
-      </a>
+        <img class="profile-image"  [src]="user?.profile?.foto"/>
+    </div>
       <li *ngFor="let option of navbarOptions">
         <a
           class="navbar-element"

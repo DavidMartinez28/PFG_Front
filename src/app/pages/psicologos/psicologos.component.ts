@@ -10,6 +10,8 @@ import { PacienteService } from 'src/app/core/services/paciente.service';
 })
 export class PsicologosComponent {
   psicologos: PsicologoPaciente[] = [];
+  filterPost= '';
+  
   constructor(
     public psicologoService: PacienteService,
     public authService: AuthService

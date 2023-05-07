@@ -12,6 +12,11 @@
   color: white;
 }
 
+.profile-image{
+  width: 50%;
+  height: 50%;
+}
+
 .element-list {
   list-style: none;
   margin-top: 100px;

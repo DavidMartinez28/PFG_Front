@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, Injectable} from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -11,11 +12,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class SigninComponent {
   signinForm?: FormGroup;
+  public errorMessage = ''
 
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    @Inject(DOCUMENT) public document: Document
   ) {
     this.signinForm = this.fb.group({
       email: [''],
@@ -24,6 +27,8 @@ export class SigninComponent {
   }
 
   loginUser() {
-    this.authService.signIn(this.signinForm?.value)
+    this.authService.signIn(this.signinForm?.value).subscribe({
+      error: (err) => this.errorMessage = err?.error?.message
+    });
   }
 }

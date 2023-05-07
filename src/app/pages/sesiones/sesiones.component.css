@@ -43,7 +43,7 @@ select {
 
 .button-form[type="submit"]:hover {
   border-radius: 30px;
-  background-color: #be96e2;
+  background-color: #e6d7f3;
 }
 
 h3 {
@@ -188,8 +188,8 @@ h3 {
 }
 
 .card {
-  flex-basis: calc(20% - 40px); 
-  height: 100px;
+  flex-basis: calc(33% - 40px); 
+  height: 120px;
   margin: 20px;
   background-color: #ffffff;
   border-radius: 10px;
@@ -202,8 +202,23 @@ h3 {
   
 }
 
+
 @media (max-width: 768px) {
   .card {
     flex-basis: 100%;
   }
+}
+
+
+.button-icon{
+  border: none;
+  background-color: transparent;
+  margin: 10px;
+  width: 10px;
+}
+
+.iconos-sesiones {
+  margin-right: 10px;
+  color:  #917FB3;
+  font-size: 18px;
 }

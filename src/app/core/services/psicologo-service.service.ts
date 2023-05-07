@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Documentos, PacientePsicologo,SignInResponse, User, UserProfile, UserResponse } from '../models/user';
+import {Documentos, PacientePsicologo,SignInResponse, User, UserData, UserProfile, UserResponse } from '../models/user';
 import { Observable, ReplaySubject, Subject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -92,6 +92,10 @@ export class PsicologoServiceService {
       )
   }
 
+  eliminarSesion(idSesion: string): Observable<any> {
+    return this.http.delete(`${this.endpoint}/delete-sesion/${idSesion}`);
+  }
+
   obtenerSesionesPorPsicologo(id_psicologo: string): Observable<Sesion[]> {
     return this.http.get<Sesion[]>(`${this.endpoint}/sesiones/${id_psicologo}`)
       .pipe(
@@ -105,6 +109,7 @@ export class PsicologoServiceService {
         catchError(this.handleError.bind(this))
       );
   }
+
 
 
   handleError(error: HttpErrorResponse) {

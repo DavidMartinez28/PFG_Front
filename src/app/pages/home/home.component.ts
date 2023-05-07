@@ -10,6 +10,8 @@ import {PacientePsicologo} from 'src/app/core/models/user';
 })
 export class HomeComponent {
   pacientes: PacientePsicologo[] = [];
+  filterPost= '';
+  
   constructor(
     public psicologoService: PsicologoServiceService,
     public authService: AuthService

@@ -8,6 +8,7 @@ export interface User {
   descripcion: string;
   telefono: number;
   sexo: string;
+  foto: string;
 }
 
 export interface SignInResponse {
@@ -32,6 +33,7 @@ export interface UserProfile {
   email: string;
   sexo: string;
   telefono: number;
+  foto: string;
   updatedAt: Date;
   __v: number;
   _id: string;
@@ -44,36 +46,14 @@ export interface UserResponse {
 
 export interface PacientePsicologo {
   _id: string;
-  id_paciente: {
-    _id: string;
-    name: string;
-    email: string;
-    fecha_nacimiento: string;
-    telefono: number;
-    sexo: string;
-    descripcion: string;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
-  };
+  id_paciente: UserProfile;
   id_psicologo: string;
  
 }
 
 export interface PsicologoPaciente {
   _id: string;
-  id_psicologo: {
-    _id: string;
-    name: string;
-    email: string;
-    fecha_nacimiento: string;
-    telefono: number;
-    sexo: string;
-    descripcion: string;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
-  };
+  id_psicologo: UserProfile;
   id_paciente: string;
  
 }
