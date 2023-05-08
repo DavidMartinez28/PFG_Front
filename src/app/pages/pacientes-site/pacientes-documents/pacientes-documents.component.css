@@ -26,8 +26,8 @@
 }
 
 button {
-    margin-top: 20px;
-    margin-left: 15px;
+    margin-top: 0px;
+    margin-left: 0px;
     font-size: 15px;
     border-radius: 15px;
     width: 120px;
@@ -63,6 +63,23 @@ select {
   .card-container {
     flex-basis: 100%;
     flex-direction: row;
+  }
+  .archivo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    margin: 20px;
+  }
+  .archivo span {
+    margin-bottom: 10px;
+  }
+  .archivo input[type="file"] {
+    margin-bottom: 0px;
+  }
+  button{
+    margin-left: 20px;
+    margin-bottom: 10px;
   }
 }
 .card:hover{

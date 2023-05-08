@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AuthService { 
   public userLoged$:ReplaySubject<boolean> = new ReplaySubject<boolean>(1)
 	//Definimos el endpoint y los headers para poder realizar la petición
-  endpoint: string = 'http://localhost:300/api';
+  endpoint: string = 'psychogood.vercel.app/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser?: UserResponse; //Aquí almacenaremos el usuario 
 

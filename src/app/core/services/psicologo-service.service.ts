@@ -13,7 +13,7 @@ import { Sesion } from 'src/app/pages/sesiones/models/sesiones';
 export class PsicologoServiceService {
 
   //Definimos el endpoint y los headers para poder realizar la petición
-  endpoint: string = 'http://localhost:300/api';
+  endpoint: string = 'psychogood.vercel.app/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(
