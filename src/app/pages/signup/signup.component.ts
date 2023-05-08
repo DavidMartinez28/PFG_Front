@@ -31,12 +31,12 @@ export class SignupComponent implements OnInit {
     });
     this.pacienteForm = this.fb.group({
       email: ['', Validators.email],
-      password: ['', Validators.required, Validators.minLength(6)],
+      password: ['', [Validators.required, Validators.minLength(5)]],
       type: ['Paciente'],
       fecha_nacimiento: ['', Validators.required],
       name: ['', Validators.required],
       descripcion: [''],
-      telefono: ['',Validators.required, Validators.pattern(/^\d{9}$/)],
+      telefono: ['',[Validators.required, Validators.pattern(/^\d{9}$/)]],
       sexo: ['', Validators.required],
       foto:['https://res.cloudinary.com/dz5dcbc6b/image/upload/v1682358778/perfil_vvau2l.png']
     });

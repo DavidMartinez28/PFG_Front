@@ -81,7 +81,7 @@
         />
         <div *ngIf="psicologoForm.get('telefono')?.invalid && (psicologoForm.get('telefono')?.dirty || psicologoForm.get('telefono')?.touched)">
           <div class="error-messages" *ngIf="psicologoForm.get('telefono')?.errors?.['required']">Campo obligatorio</div>
-          <div class="error-messages" *ngIf="psicologoForm.get('telefono')?.errors?.['pattern']">Contraseña inválida</div>
+          <div class="error-messages" *ngIf="psicologoForm.get('telefono')?.errors?.['pattern']">Número de telefono inválido</div>
         </div>
       </div>
       
@@ -138,6 +138,7 @@
         />
         <div *ngIf="pacienteForm.get('password')?.invalid && (pacienteForm.get('password')?.dirty || pacienteForm.get('password')?.touched)">
           <div class="error-messages" *ngIf="pacienteForm.get('password')?.errors?.['required']">Campo obligatorio</div>
+          <div class="error-messages" *ngIf="pacienteForm.get('password')?.errors?.['minlength']">Contraseña inválida</div>
         </div>
       </div>
       <div class="form-wrapper-div">
@@ -176,6 +177,7 @@
         />
         <div *ngIf="pacienteForm.get('telefono')?.invalid && (pacienteForm.get('telefono')?.dirty || pacienteForm.get('telefono')?.touched)">
           <div class="error-messages" *ngIf="pacienteForm.get('telefono')?.errors?.['required']">Campo obligatorio</div>
+          <div class="error-messages" *ngIf="pacienteForm.get('telefono')?.errors?.['pattern']">Número de telefono inválido</div>
         </div>
       </div>
       <div class="form-wrapper-div">
