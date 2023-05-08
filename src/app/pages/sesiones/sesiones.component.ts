@@ -83,7 +83,7 @@ export class SesionesComponent {
               _id: sesion._id,
               nombrePaciente: sesion.nombrePaciente,
               fecha: fecha.toLocaleDateString(),
-              hora: `${fecha.getHours()}:${fecha
+              hora: `${fecha.getHours()-2}:${fecha
                 .getMinutes()
                 .toString()
                 .padStart(2, '0')}`,
