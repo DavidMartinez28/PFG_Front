@@ -13,7 +13,7 @@ import { Sesion } from 'src/app/pages/sesiones/models/sesiones';
 export class PsicologoServiceService {
 
   //Definimos el endpoint y los headers para poder realizar la petición
-  endpoint: string = 'https://psychogood.onrender.com/api';
+  endpoint: string = 'http://localhost:300/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(
@@ -98,6 +98,13 @@ export class PsicologoServiceService {
 
   obtenerSesionesPorPsicologo(id_psicologo: string): Observable<Sesion[]> {
     return this.http.get<Sesion[]>(`${this.endpoint}/sesiones/${id_psicologo}`)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      );
+  }
+
+  obtenerSesionesPorPacientes(id_psicologo: string, id_paciente: string): Observable<Sesion[]> {
+    return this.http.get<Sesion[]>(`${this.endpoint}/sesiones/psicologo/${id_psicologo}/paciente/${id_paciente}`)
       .pipe(
         catchError(this.handleError.bind(this))
       );

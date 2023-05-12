@@ -13,6 +13,13 @@
   >
     Documentos
   </button>
+  <button
+  mat-button
+  [ngClass]="selectedTab === 'sesiones' ? 'selected' : 'Sesiones'"
+  (click)="selectTab('sesiones')"
+>
+  Sesiones
+</button>
 </div>
 
 <div class="container" *ngIf="selectedTab === 'datos'">
@@ -78,6 +85,11 @@
   *ngIf="selectedTab === 'documentos' && paciente"
   [pacienteId]="paciente._id"
 ></app-pacientes-documents>
+
+<app-pacientes-sesiones
+  *ngIf="selectedTab === 'sesiones' && paciente"
+  [pacienteId]="paciente._id"
+></app-pacientes-sesiones>
 
 <!-- <div *ngIf="selectedTab === 'documentos'">
   <div class="archivo">

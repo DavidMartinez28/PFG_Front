@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PacientesSiteComponent } from './pacientes-site.component';
 import {MatCardModule} from '@angular/material/card';
 import { PacientesDocumentsComponent } from './pacientes-documents/pacientes-documents.component';
+import { PacientesSesionesComponent } from './pacientes-sesiones/pacientes-sesiones/pacientes-sesiones.component';
 
 @NgModule({
   declarations: [
     PacienteDatosComponent,
     PacientesSiteComponent,
-    PacientesDocumentsComponent
+    PacientesDocumentsComponent,
+    PacientesSesionesComponent
   ],
   imports: [
     CommonModule,
