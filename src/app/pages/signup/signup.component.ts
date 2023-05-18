@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
   psicologoForm: FormGroup;
   pacienteForm: FormGroup;
   signupType: string = 'Psicologo';
+  public errorMessage = ''
 
   constructor(
     public fb: FormBuilder,
@@ -60,6 +61,9 @@ export class SignupComponent implements OnInit {
         form.reset();
         this.router.navigate(['log-in']);
       }
+    },
+    (error) => {
+      this.errorMessage = error.error.message;
     });
   }
 }

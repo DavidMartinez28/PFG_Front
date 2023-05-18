@@ -1,43 +1,46 @@
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    
-  }
+  display: flex;
+  flex-wrap: wrap;
   
+}
+
+.card {
+  flex-basis: calc(33% - 40px); 
+  height: 120px;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0.5rem 0.5rem 1rem #696969;
+
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+  color: #917FB3;
+  
+}
+
+
+@media (max-width: 768px) {
   .card {
-    flex-basis: calc(33% - 40px); 
-    margin: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0.5rem 0.5rem 1rem #696969;
-  /*   margin-left: -50px; */
-    transition: 0.4s ease-out;
-    position: relative;
-    left: 0px;
-    color: #917FB3;
-    
+    flex-basis: 100%;
   }
-  
-  @media (max-width: 768px) {
-    .card {
-      flex-basis: 100%;
-    }
-  }
-  .card:hover{
-    background-color: #f2e9f8;
-  }
-  
-  
-  .card:hover {
-    transform: translateY(-6px);
-    transition: 0.4s ease-out;
-  }
-  
-  .card:hover ~ .card {
-    position: relative;
-  
-    transition: 0.4s ease-out;
-  }
+}
+
+button {
+  margin-left: 10px;
+  font-size: 12px;
+  border-radius: 15px;
+  width: 80px;
+  height: 30px;
+}
+
+button:hover {
+  background-color: #e6d7f3;
+}
+
+button.selected {
+  background-color: #e6d7f3;
+}
   
   .img{
      border-radius: 50%;
@@ -67,7 +70,7 @@
 
   .success-message {
     background-color: #9df09d;
-    color: white;
+    color: black;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;

@@ -1,5 +1,9 @@
 <button (click)="logOut()">Cerrar sesión</button>
 
+<div *ngIf="successMessage" class="success-message" [class.show-message]="successMessage">
+  {{ successMessage }}
+</div>
+
 <div class="container" *ngIf="userForm">
   <form [formGroup]="userForm" class="form-wrapper" (submit)="actualizarPerfil()">
     <h3>Informacion personal</h3>

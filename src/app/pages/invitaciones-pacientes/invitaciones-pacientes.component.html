@@ -1,5 +1,5 @@
 <div class="search-container">
-    <input matInput placeholder="Buscar pacientes" name="filterPost">
+    <input matInput placeholder="Buscar invitaciones" name="filterPost">
 </div>
 
 <div class="card-container">
@@ -13,6 +13,7 @@
         </mat-card-header>
         <mat-card-actions class="mat-card-actions">
             <button (click)="crearRelacion(invitacion.id_psicologo); deleteInvitacion(invitacion._id)">Aceptar</button>
+            <button (click)="deleteInvitacion(invitacion._id)">Rechazar</button>
         </mat-card-actions>
       </mat-card>
     </ng-container>

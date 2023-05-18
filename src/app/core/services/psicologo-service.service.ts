@@ -65,6 +65,10 @@ export class PsicologoServiceService {
       );
   }
 
+  eliminarPaciente(id_psicologo: string, id_paciente: string): Observable<any> {
+    return this.http.delete(`${this.endpoint}/psicologos/${id_psicologo}/eliminar-paciente/${id_paciente}`);
+  }
+
 
   getPacienteById(pacienteId: string): Observable<UserProfile> {
     return this.http.get<UserProfile>(`${this.endpoint}/paciente/${pacienteId}`, {headers: this.headers})
@@ -82,6 +86,10 @@ export class PsicologoServiceService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  eliminarDocumento(idDocumento: string){
+    return this.http.delete(`${this.endpoint}/delete/documentos/${idDocumento}`);
   }
 
   crearSesion(sesion: Sesion): Observable<Sesion> {
@@ -109,6 +117,14 @@ export class PsicologoServiceService {
         catchError(this.handleError.bind(this))
       );
   }
+
+  obtenerSesionesPasadasPorPacientes(id_psicologo: string, id_paciente: string): Observable<Sesion[]> {
+    return this.http.get<Sesion[]>(`${this.endpoint}/sesiones/psicologo/${id_psicologo}/paciente/${id_paciente}/anteriores`)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      );
+  }
+
 
   cambiarVisibilidad(documento: Documentos): Observable<Documentos> {
     return this.http.put<Documentos>(`${this.endpoint}/documentos-estado/${documento._id}`, documento)

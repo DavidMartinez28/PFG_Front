@@ -18,6 +18,25 @@
     color: #917FB3;
     
   }
+  .titulo-paciente {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin: 20px;
+    font-family: inherit, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .titulo-paciente::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 700px;
+    border-bottom: 2px solid #000000;
+  }
   
   @media (max-width: 768px) {
     .card {

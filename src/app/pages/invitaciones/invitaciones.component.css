@@ -1,30 +1,33 @@
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+  display: flex;
+  flex-wrap: wrap;
   
+}
+
+.card {
+  flex-basis: calc(33% - 40px); 
+  height: 120px;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0.5rem 0.5rem 1rem #696969;
+
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+  color: #917FB3;
+  
+}
+
+
+@media (max-width: 768px) {
   .card {
-    flex-basis: calc(50% - 40px); 
-    margin: 20px;
-    
+    flex-basis: 100%;
   }
-
-  .mat-card-actions {
-    display: flex;
-    justify-content: flex-end;
-
-  }
-  
-  @media (max-width: 768px) {
-    .card {
-      flex-basis: 100%;
-    }
-  }
+}
 
   button {
-    margin-top: 20px;
-    margin-left: 15px;
+    margin-left: 10px;
     font-size: 12px;
     border-radius: 15px;
     width: 80px;

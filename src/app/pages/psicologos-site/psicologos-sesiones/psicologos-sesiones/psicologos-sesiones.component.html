@@ -1,0 +1,39 @@
+<button class="button-sesion" [class.selected]="sesionesActuales" (click)="sesionesActuales = true; sesionesPasadas= false">
+    <span>Programadas</span>
+  </button>
+  
+  <button class="button-sesion" [class.selected]="sesionesPasadas" (click)="sesionesPasadas = true; sesionesActuales= false;">
+    <span>Finalizadas</span>
+  </button>
+  
+  
+  <div class="card-container" *ngIf="sesionesActuales">
+    <ng-container *ngFor="let sesion of sesionesFormateadas">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>Fecha: {{ sesion.fecha }} - Hora:
+              {{ sesion.hora }}</mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-actions class="mat-card-actions">
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+  
+  <div class="card-container" *ngIf="sesionesPasadas">
+    <ng-container *ngFor="let sesion of sesionesAntiguasFormateadas">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>Fecha: {{ sesion.fecha }} - Hora:
+              {{ sesion.hora }}</mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-actions class="mat-card-actions">
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+  

@@ -48,7 +48,7 @@ const routes: Routes = [
       import('./pages/sesiones-pacientes/sesiones-pacientes.module').then(m => m.SesionesPacientesModule),
       canActivate: [AuthGuard]
   },
-  { path: '', redirectTo: '/sign-up', pathMatch: 'full' },
+  { path: '', redirectTo: '/log-in', pathMatch: 'full' },
 
   {
     path: 'pacientes-site/:id',loadChildren: () =>

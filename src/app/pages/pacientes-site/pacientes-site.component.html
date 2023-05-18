@@ -1,5 +1,7 @@
+<div><h3 class="titulo-paciente">{{paciente?.name}}</h3></div>
 <div class="position-button">
   <button
+    class="button-tab"
     mat-button
     [ngClass]="selectedTab === 'datos' ? 'selected' : ''"
     (click)="selectTab('datos')"
@@ -7,6 +9,7 @@
     Datos
   </button>
   <button
+    class="button-tab"
     mat-button
     [ngClass]="selectedTab === 'documentos' ? 'selected' : 'Documentos'"
     (click)="selectTab('documentos')"
@@ -14,6 +17,7 @@
     Documentos
   </button>
   <button
+  class="button-tab"
   mat-button
   [ngClass]="selectedTab === 'sesiones' ? 'selected' : 'Sesiones'"
   (click)="selectTab('sesiones')"
@@ -78,6 +82,7 @@
       <label for="sexo">Sexo:</label>
       <input id="sexo" name="sexo" formControlName="sexo" readonly />
     </div>
+    <button class="button-eliminar" (click)="eliminarPaciente()" >Eliminar paciente</button>
   </form>
 </div>
 

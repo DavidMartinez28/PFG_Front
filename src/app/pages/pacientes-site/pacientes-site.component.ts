@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Documentos, UserProfile } from 'src/app/core/models/user';
 import { PsicologoServiceService } from 'src/app/core/services/psicologo-service.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-pacientes-site',
@@ -20,6 +21,7 @@ export class PacientesSiteComponent implements OnInit {
     private router: Router,
     public psicologoService: PsicologoServiceService,
     public fb: FormBuilder,
+    public authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -61,4 +63,23 @@ export class PacientesSiteComponent implements OnInit {
     });
   }
 
+  eliminarPaciente() {
+    const psicologoId = this.authService.getUserId();
+    if (!this.paciente || !psicologoId) {
+      return;
+    }
+    const pacienteId = this.paciente._id; // Reemplaza 'id' con la propiedad adecuada que contiene el ID del paciente
+
+    this.psicologoService.eliminarPaciente(psicologoId, pacienteId).subscribe(
+      () => {
+        // Paciente eliminado correctamente, puedes redirigir o realizar otras acciones
+        console.log('El paciente ha sido eliminado correctamente.');
+        this.router.navigate(['pacientes']);
+        
+      },
+      (error) => {
+        console.log('Hubo un error al eliminar el paciente:', error);
+      }
+    );
+  }
 }

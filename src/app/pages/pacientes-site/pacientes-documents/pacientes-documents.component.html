@@ -1,11 +1,12 @@
+
 <div class="archivo">
   <span>Adjuntar archivo</span>
   <input type="file" (change)="getFile($event)" />
-  <div *ngIf="loading">Cargando...</div>
+  <div class="loading-message" *ngIf="loading">Cargando...</div>
 </div>
 
 <div>
-  <button (click)="sendFile()">Enviar</button>
+  <button class="button-tab" (click)="sendFile()">Enviar</button>
 </div>
 
 <div class="documentos-container">
@@ -13,16 +14,21 @@
     class="card-container"
     *ngFor="let documento of documentos; let i = index"
   >
-      <div class="eye-icon"
-        (click)="toggleVisibility(documento)"
-        [ngClass]="{
-          'eye-icon--visible': documento.estado === 'visible'
-        }"
-      >
-        <i class="fa fa-eye"></i>
-      </div>
-      <img src="../../../../assets/pdf.png" (click)="openDocumento(documento)" />
-      <p class="document-name" (click)="openDocumento(documento)">{{ documento.nameFile }}</p>
-      
+    <div
+      class="eye-icon"
+      (click)="toggleVisibility(documento)"
+      [ngClass]="{
+        'eye-icon--visible': documento.estado === 'visible'
+      }"
+    >
+      <i class="fa fa-eye"></i>
+    </div>
+    <button (click)="eliminarDocumento(documento._id)" class="button-icon">
+      <i class="fa fa-trash iconos-documentos" aria-hidden="true"></i>
+    </button>
+    <img src="../../../../assets/pdf.png" (click)="openDocumento(documento)" />
+    <p class="document-name" (click)="openDocumento(documento)">
+      {{ documento.nameFile }}
+    </p>
   </div>
 </div>

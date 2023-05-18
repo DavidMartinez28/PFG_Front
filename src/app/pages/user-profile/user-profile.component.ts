@@ -13,6 +13,7 @@ export class UserProfileComponent implements OnInit {
 
   userForm?: FormGroup;
   user?: UserResponse; //Aquí almacenaremos los datos del usuario logeado
+  successMessage: string = '';
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
@@ -48,7 +49,10 @@ export class UserProfileComponent implements OnInit {
    this.authService.cambiarPerfil(userId,this.userForm?.value).subscribe((data) => {
     this.authService.getUserProfile(data._id).subscribe((user) => {
       this.getFormulario(user);
-      
+      this.successMessage = 'El perfil se ha actualizado con éxito';
+      setTimeout(() => {
+        this.successMessage = '';
+      }, 3000); // 3000 milisegundos = 3 segundos
     });
    });
   }

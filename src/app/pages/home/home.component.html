@@ -5,6 +5,7 @@
 <div class="card-container">
   <ng-container *ngFor="let paciente of pacientes | filterPacientes:filterPost">
     <mat-card
+      *ngIf="paciente.id_paciente"
       class="card"
       [routerLink]="['/pacientes-site', paciente.id_paciente._id]"
       [queryParams]="{ tab: 'datos' }"

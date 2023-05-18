@@ -1,3 +1,4 @@
+<div><h3 class="titulo-psicologo">{{psicologo?.name}}</h3></div>
 <div class="position-button">
     <button
       mat-button
@@ -13,6 +14,13 @@
     >
       Documentos
     </button>
+    <button
+    mat-button
+    [ngClass]="selectedTab === 'sesiones' ? 'selected' : 'Sesiones'"
+    (click)="selectTab('sesiones')"
+  >
+    Sesiones
+  </button>
   </div>
   
   <div class="container" *ngIf="selectedTab === 'datos'">
@@ -78,3 +86,8 @@
   *ngIf="selectedTab === 'documentos' && psicologo"
   [psicologoId]="psicologo._id"
 ></app-psicologos-documents>
+
+<app-psicologos-sesiones
+  *ngIf="selectedTab === 'sesiones' && psicologo"
+  [psicologoId]="psicologo._id"
+></app-psicologos-sesiones>

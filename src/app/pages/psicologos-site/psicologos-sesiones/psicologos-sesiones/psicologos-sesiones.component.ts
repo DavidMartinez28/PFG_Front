@@ -1,17 +1,17 @@
 import { Component, Input } from '@angular/core';
-import { Sesion } from '../../../sesiones/models/sesiones';
-import { PsicologoServiceService } from 'src/app/core/services/psicologo-service.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { PsicologoServiceService } from 'src/app/core/services/psicologo-service.service';
+import { Sesion } from 'src/app/pages/sesiones/models/sesiones';
 
 @Component({
-  selector: 'app-pacientes-sesiones',
-  templateUrl: './pacientes-sesiones.component.html',
-  styleUrls: ['./pacientes-sesiones.component.css']
+  selector: 'app-psicologos-sesiones',
+  templateUrl: './psicologos-sesiones.component.html',
+  styleUrls: ['./psicologos-sesiones.component.css']
 })
-export class PacientesSesionesComponent {
+export class PsicologosSesionesComponent {
 
-  @Input() public pacienteId?: string;
-  private psicologoId?: string;
+  @Input() public psicologoId?: string;
+  private pacienteId?: string;
   modalVisible: boolean = false;
   successMessage: string = '';
   public sesionesActuales: boolean = false;
@@ -28,7 +28,7 @@ export class PacientesSesionesComponent {
   ) {}
 
   ngOnInit() {
-    this.psicologoId = this.authService.getUserId();
+    this.pacienteId = this.authService.getUserId();
     this.obtenerSesionesPorPacientes();
     this.obtenerSesionesPasadas()
   } 
@@ -70,22 +70,5 @@ export class PacientesSesionesComponent {
           });
     });
   }
-
-  eliminarSesion(id: string){
-    this.psicologoService.eliminarSesion(id).subscribe((res) => {
-      this.obtenerSesionesPorPacientes();
-      if (res) {
-        this.obtenerSesionesPorPacientes()
-        this.obtenerSesionesPasadas()
-        this.modalVisible = false;
-        this.successMessage = 'La sesión ha sido eliminada con éxito';
-        setTimeout(() => {
-          this.successMessage = '';
-        }, 3000); // 3000 milisegundos = 3 segundos
-      }
-       
-    });
-   
-  }
-
 }
+

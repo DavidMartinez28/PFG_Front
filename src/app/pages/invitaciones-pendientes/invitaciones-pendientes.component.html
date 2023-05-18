@@ -1,4 +1,4 @@
-<button [routerLink]="['/invitaciones']" routerLinkActive="link-active">
+<button class="button-invitacion" [routerLink]="['/invitaciones']" routerLinkActive="link-active">
     <i class="fa fa-plus-circle iconos" aria-hidden="true"></i>
     <span>Invitar paciente</span> 
 </button>
@@ -13,7 +13,7 @@
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-actions class="mat-card-actions">
-          <button (click)="deleteInvitacion(invitacion._id)">Eliminar</button>
+          <button class="button-eliminar" (click)="deleteInvitacion(invitacion._id)">Eliminar</button>
         </mat-card-actions>
       </mat-card>
     </ng-container>

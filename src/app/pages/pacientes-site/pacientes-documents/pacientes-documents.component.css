@@ -9,6 +9,7 @@
   align-items: center;
   width: 200px;
   margin: 20px;
+  position: relative;
 }
 
 .document-name{
@@ -25,7 +26,7 @@
   width: 30%;
 }
 
-button {
+.button-tab {
     margin-top: 0px;
     margin-left: 0px;
     font-size: 15px;
@@ -34,11 +35,11 @@ button {
     height: 30px;
   }
   
-  button:hover {
+  .button-tab:hover {
     background-color: #e6d7f3;
   }
   
-  button.selected {
+  .button.tab.selected {
     background-color: #e6d7f3;
   }
 
@@ -59,6 +60,11 @@ select {
   
 }
 
+.loading-message{
+  margin-bottom: 20px;
+}
+
+
 @media (max-width: 768px) {
   .card-container {
     flex-basis: 100%;
@@ -77,10 +83,25 @@ select {
   .archivo input[type="file"] {
     margin-bottom: 0px;
   }
-  button{
+  .button-tab{
     margin-left: 20px;
     margin-bottom: 10px;
   }
+
+  img{
+    margin-left: 30px;
+  }
+
+  .loading-message{
+    margin-top: 20px;
+  }
+
+  .eye-icon {
+    color: grey;
+    position: absolute;
+    left: 0;
+   }
+
 }
 .card:hover{
   background-color: #e6d7f3;
@@ -89,8 +110,27 @@ select {
 .eye-icon {
  margin-left: auto;
  color: grey;
+ position: absolute;
+ right: 0;
 }
 
 .eye-icon--visible {
-  color: blue;
+  color: rgb(139, 28, 190);
+}
+
+.button-icon{
+  border: none;
+  background-color: transparent;
+  margin: 10px;
+  top: 20px;
+  width: 10px;
+  margin-left: auto;
+  position: absolute;
+  right: 0;
+}
+
+.iconos-documentos {
+  margin-right: 10px;
+  color:  #917FB3;
+  font-size: 18px;
 }

@@ -18,6 +18,8 @@ export class PacientesDocumentsComponent {
   private psicologoId?: string;
   documentos?: Documentos[] = [];
   loading = false;
+  modalVisible: boolean = false;
+  successMessage: string = '';
 
   constructor(
     public psicologoService: PsicologoServiceService,
@@ -73,6 +75,21 @@ export class PacientesDocumentsComponent {
     if (!this.psicologoId || !this.pacienteId) { return; }
     this.psicologoService.getDocuments(this.psicologoId, this.pacienteId).subscribe((data) => {
       this.documentos = data;
+    });
+  }
+
+  eliminarDocumento(id: string){
+    this.psicologoService.eliminarDocumento(id).subscribe((res) => {
+      this.getDocuments();
+      if (res) {
+        this.getDocuments()
+        this.modalVisible = false;
+        this.successMessage = 'La sesión ha sido eliminada con éxito';
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 3000); // 3000 milisegundos = 3 segundos
+      }
+       
     });
   }
 
