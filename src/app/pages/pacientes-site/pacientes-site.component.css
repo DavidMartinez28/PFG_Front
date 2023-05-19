@@ -149,7 +149,7 @@ h3 {
 }
 
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 400px) {
   .form-wrapper {
     min-width: 200px;
     box-sizing: border-box;
