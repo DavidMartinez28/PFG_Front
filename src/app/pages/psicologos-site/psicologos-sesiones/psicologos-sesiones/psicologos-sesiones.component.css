@@ -62,4 +62,9 @@
     color: black;
     border: 2px solid #333333;
   }
-  
+
+  @media only screen and (max-width: 400px) {
+    .button-sesion {
+      font-size: 13px;
+    }
+  }

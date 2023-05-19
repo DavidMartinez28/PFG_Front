@@ -151,7 +151,7 @@ h3 {
 
 @media only screen and (max-width: 400px) {
   .form-wrapper {
-    min-width: 200px;
+    min-width: 250px;
     box-sizing: border-box;
     padding: 0 10px;
     display: flex;
@@ -208,5 +208,15 @@ h3 {
     font-weight: 600;
     margin: 10px;
   }
+  
+  .button-tab {
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 12px;
+    border-radius: 15px;
+    width: 100px;
+    height: 30px;
+  }
+  
 
 }
