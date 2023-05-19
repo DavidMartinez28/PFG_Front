@@ -17,7 +17,7 @@
                 <div class="inputbox">
                     
                     <input type="password" formControlName="password" required>
-                    <label class="label" [ngClass]="{'input-filled': signinForm.get('password')?.value }" for="">Password</label>
+                    <label class="label" [ngClass]="{'input-filled': signinForm.get('password')?.value }" for="">Contraseña</label>
                 </div>
                 <button  type="submit">Log in</button>
                 <p class="error-message"  *ngIf="errorMessage">{{ errorMessage }}</p>
