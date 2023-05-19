@@ -108,6 +108,7 @@ button{
     cursor: pointer;
     font-size: 1em;
     font-weight: 600;
+    color: black;
 }
 .register{
     font-size: .9em;
