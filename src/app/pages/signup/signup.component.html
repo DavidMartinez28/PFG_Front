@@ -45,7 +45,8 @@
         />
         <div *ngIf="psicologoForm.get('password')?.invalid && (psicologoForm.get('password')?.dirty || psicologoForm.get('password')?.touched)">
           <div class="error-messages" *ngIf="psicologoForm.get('password')?.errors?.['required']">Campo obligatorio</div>
-          <div class="error-messages" *ngIf="psicologoForm.get('password')?.errors?.['minlength']">Contraseña inválida</div>
+          <div class="error-messages" *ngIf="psicologoForm.get('password')?.errors?.['minlength']">Contraseña inválida (Mínimo 5 caraceres)</div>
+          <div class="error-messages" *ngIf="psicologoForm.get('password')?.errors?.['maxlength']">Contraseña inválida (Máximo 15 caracteres)</div>
         </div>
       </div>
       <div class="form-wrapper-div">
@@ -144,7 +145,8 @@
         />
         <div *ngIf="pacienteForm.get('password')?.invalid && (pacienteForm.get('password')?.dirty || pacienteForm.get('password')?.touched)">
           <div class="error-messages" *ngIf="pacienteForm.get('password')?.errors?.['required']">Campo obligatorio</div>
-          <div class="error-messages" *ngIf="pacienteForm.get('password')?.errors?.['minlength']">Contraseña inválida</div>
+          <div class="error-messages" *ngIf="pacienteForm.get('password')?.errors?.['minlength']">Contraseña inválida (Mínimo 5 caracteres)</div>
+          <div class="error-messages" *ngIf="pacienteForm.get('password')?.errors?.['maxlength']">Contraseña inválida (Máximo 15 caracteres)</div>
         </div>
       </div>
       <div class="form-wrapper-div">

@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
   ) {
     this.psicologoForm = this.fb.group({
       email: ['', Validators.email],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
       type: ['Psicologo'],
       fecha_nacimiento: ['', Validators.required],
       name: ['', Validators.required],
@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
     });
     this.pacienteForm = this.fb.group({
       email: ['', Validators.email],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
       type: ['Paciente'],
       fecha_nacimiento: ['', Validators.required],
       name: ['', Validators.required],
